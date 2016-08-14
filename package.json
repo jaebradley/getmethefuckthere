@@ -14,7 +14,7 @@
   "preferGlobal": true,
   "main": "./build/index.js",
   "dependencies": {
-    "google-directions-client": "^0.0.1"
+    "google-directions-client": "0.0.3"
   },
   "devDependencies": {
     "chai": "3.5.0",
