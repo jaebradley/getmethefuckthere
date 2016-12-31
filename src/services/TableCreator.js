@@ -10,23 +10,33 @@ export default class TableCreator {
   }
 
   static createRouteTable(route) {
-    let row = List.of(
-      route.summary,
-      route.warnings
-    );
+    let table = new Table();
 
-    row = row.concat(route.legs.map(leg => TableCreator.createLegRow(leg)));
-    return new Table(row.toJS()).toString();
+    table.push([
+      {
+        content: route.summary,
+        colSpan: 2,
+        hAlign: 'center'
+      },
+      {
+        content: route.warnings.toJS().toString(),
+        colSpan: 2,
+        hAlign: 'center'
+      }
+    ]);
+
+    route.legs.forEach(leg => TableCreator.createLegRow(table, leg));
+    return table.toString();
   }
 
-  static createLegRow(leg) {
-    let row = List.of(
+  static createLegRow(table, leg) {
+    table.push([
       leg.distance,
       leg.duration,
       leg.start,
       leg.end
-    );
-    return row.concat(leg.steps.map(step => TableCreator.createStepRow(step)));
+    ]);
+    leg.steps.forEach(step => table.push(TableCreator.createStepRow(step).toJS()));
   }
 
   static createStepRow(step) {
