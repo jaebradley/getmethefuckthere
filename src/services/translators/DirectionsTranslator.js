@@ -41,7 +41,7 @@ export default class DirectionsTranslator {
     }
 
     let summary = route['summary'];
-    if (typeof summary !=== 'string') {
+    if (typeof summary !== 'string') {
       throw new TypeError('summary field is not a string');
     }
 
@@ -58,7 +58,7 @@ export default class DirectionsTranslator {
     return new Route({
       summary: summary,
       warnings: warnings,
-      legs: List(legs.map(leg => DirectionsTranslator.translateLeg(leg)));
+      legs: List(legs.map(leg => DirectionsTranslator.translateLeg(leg)))
     });
   }
 
