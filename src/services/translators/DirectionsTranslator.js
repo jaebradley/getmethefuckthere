@@ -28,7 +28,62 @@ export default class DirectionsTranslator {
   }
 
   static translateLeg(leg) {
+    if (!('distance' in leg)) {
+      throw new ReferenceError('distance field not found in leg');
+    }
 
+    if (!('duration' in leg)) {
+      throw new ReferenceError('duration field not found in leg');
+    }
+
+    if (!('end_address' in leg)) {
+      throw new ReferenceError('end address field not found in leg');
+    }
+
+    if (!('start_address' in leg)) {
+      throw new ReferenceError('start address field not found in leg');
+    }
+
+    if (!('text' in leg['distance'])) {
+      throw new ReferenceError('text field not in leg field');
+    }
+
+    if (!('text' in leg['duration'])) {
+      throw new ReferenceError('text field not in leg field');
+    }
+
+    let distanceDescription = leg['distance']['text'];
+    if (typeof distanceDescription !== 'string') {
+      throw new TypeError('distance text field not a string');
+    }
+
+    let durationDescription = leg['duration']['text'];
+    if (typeof durationDescription !== 'string') {
+      throw new TypeError('duration text field not a string');
+    }
+
+    let end = leg['end_address'];
+    if (typeof end !== 'string') {
+      throw new TypeError('end address field not a string');
+    }
+
+    let start = leg['start_address'];
+    if (typeof start !== 'string') {
+      throw new TypeError('start address field not a string');
+    }
+
+    let steps = leg['steps'];
+    if (!Array.isArray(steps)) {
+      throw new TypeError('steps field not an array');
+    }
+
+    return new Leg({
+      distance: distanceDescription,
+      duration: durationDescription,
+      end: end,
+      start: start,
+      steps: List(steps.map(step => DirectionsTranslator.translateStep(step)))
+    });
   }
 
   static translateStep(step) {
