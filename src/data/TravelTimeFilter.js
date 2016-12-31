@@ -1,6 +1,6 @@
 'use es6';
 
-import {Record, Map} from 'immutable';
+import {Map, Record} from 'immutable';
 import moment from 'moment-timezone';
 
 import TravelTimeFilterType from './TravelTimeFilterType';
@@ -15,9 +15,6 @@ export default class TravelTimeFilter extends Record(defaults) {
     let parameterName = this.type === TravelTimeFilterType.DEPARTURE
       ? 'departure_time'
       : 'arrival_time';
-
-    return Map({
-      `${parameterName}`: this.value.valueOf()
-    });
+    return Map.of(parameterName, this.value.valueOf());
   }
 }
