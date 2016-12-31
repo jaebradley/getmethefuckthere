@@ -9,10 +9,9 @@ export default class DirectionsService {
     });
   }
 
-  fetch(origin, destination) {
+  fetch(search) {
     return new Promise((resolve, reject) => {
-         this.client.directions({ origin: origin, destination: destination },
-                               (err, data) => {
+         this.client.directions(search.toJS(), (err, data) => {
              if (err !== null) {
                return reject(err);
              }
