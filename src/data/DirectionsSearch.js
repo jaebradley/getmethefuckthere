@@ -2,20 +2,20 @@
 
 import {Record} from 'immutable';
 
+import TrafficModel from './TrafficModel';
+import TravelMode from './TravelMode';
 import TravelTimeFilter from './TravelTimeFilter';
 
 let defaults = {
-  origin: '',
   destination: '',
+  origin: '',
+  travelMode: TravelMode.DRIVING,
+  trafficModel: TrafficModel.BEST_GUESS,
+  transitModes: List.of(),
+  travelRestrictions: List.of(),
   travelTimeFilter: new TravelTimeFilter(),
-  mode: 'driving',
-  waypoints: 'Strathfield, NSW',
-  alternatives: true,
-  avoid: ['tolls', 'ferries'],
-  traffic_model: 'best_guess',
-  optimize: true,
-  transit_mode: ['bus', 'rail'],
-  language: 'en',
-  units: 'metric',
-  region: 'au',
+  useAlternatives: true,
+}
+
+export default class DirectionsSearch extends Record(defaults) {
 }
