@@ -2,11 +2,12 @@
 
 import {Record} from 'immutable';
 
+import TravelTimeFilter from './TravelTimeFilter';
+
 let defaults = {
-  origin: 'Town Hall, Sydney, NSW',
-  destination: 'Parramatta, NSW',
-  departure_time: inOneHour,
-  arrival_time: inOneHour,
+  origin: '',
+  destination: '',
+  travelTimeFilter: new TravelTimeFilter(),
   mode: 'driving',
   waypoints: 'Strathfield, NSW',
   alternatives: true,
