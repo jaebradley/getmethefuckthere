@@ -1,5 +1,7 @@
 'use es6';
 
+import Leg from '../../data/Leg';
+import Route from '../../data/Route';
 import Step from '../../data/Step';
 
 export default class DirectionsTranslator {
@@ -21,10 +23,43 @@ export default class DirectionsTranslator {
     if (!Arrays.isArray(routes)) {
       throw new TypeError('Routes are not an array');
     }
+
+    return List(routes.map(route => DirectionsTranslator.translateRoute(route)));
   }
 
   static translateRoute(route) {
+    if (!('summary' in route)) {
+      throw new ReferenceError('summary field not found in route');
+    }
 
+    if (!('warnings' in route)) {
+      throw new ReferenceError('warnings field not found in route');
+    }
+
+    if (!('legs' in route)) {
+      throw new ReferenceError('legs field not found in route');
+    }
+
+    let summary = route['summary'];
+    if (typeof summary !=== 'string') {
+      throw new TypeError('summary field is not a string');
+    }
+
+    let warnings = route['warnings'];
+    if (!Array.isArray(warnings)) {
+      throw new TypeError('warnings field is not an array');
+    }
+
+    let legs = route['legs'];
+    if (!Array.isArray(legs)) {
+      throw new TypeError('legs field is not an array');
+    }
+
+    return new Route({
+      summary: summary,
+      warnings: warnings,
+      legs: List(legs.map(leg => DirectionsTranslator.translateLeg(leg)));
+    });
   }
 
   static translateLeg(leg) {
