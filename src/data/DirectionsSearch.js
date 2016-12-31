@@ -1,6 +1,6 @@
 'use es6'
 
-import {Record} from 'immutable';
+import {List, Record} from 'immutable';
 
 import TrafficModel from './TrafficModel';
 import TravelMode from './TravelMode';
@@ -18,4 +18,16 @@ let defaults = {
 }
 
 export default class DirectionsSearch extends Record(defaults) {
+  toParameters() {
+    let travelTimeFilterParameter = this.travelTimeFilter.toParameter();
+    let parameters = Map({
+      destination: this.destination,
+      origin: this.origin,
+      mode: this.travelMode.value,
+      alternatives: this.useAlternatives,
+      avoid: List(this.transitModes.map(mode => mode.value)),
+      traffic_model: this.trafficModel.value,
+    });
+    return parameters.merge(travelTimeFilterParameter);
+  }
 }
