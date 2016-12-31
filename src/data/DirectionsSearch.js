@@ -14,7 +14,7 @@ let defaults = {
   transitModes: List.of(),
   travelRestrictions: List.of(),
   travelTimeFilter: new TravelTimeFilter(),
-  useAlternatives: true,
+  useAlternatives: false,
 }
 
 export default class DirectionsSearch extends Record(defaults) {
