@@ -1,20 +1,25 @@
 'use es6';
 
 import {Enum} from 'enumify';
+import emoji from 'node-emoji';
 
 export default class TravelMode extends Enum {};
 
 TravelMode.initEnum({
   DRIVING: {
-    value: 'driving'
+    value: 'driving',
+    emoji: emoji.get('car'),
   },
   WALKING: {
-    value: 'walking'
+    value: 'walking',
+    emoji: emoji.get('walking'),
   },
   BICYCLING: {
-    value: 'bicycling'
+    value: 'bicycling',
+    emoji: emoji.get('bicyclist'),
   },
   TRANSIT: {
-    value: 'transit'
+    value: 'transit',
+    emoji: emoji.get('metro'),
   },
 });
