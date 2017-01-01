@@ -13,6 +13,9 @@
   "license": "MIT",
   "preferGlobal": true,
   "main": "./build/executables/gmtft.js",
+  "bin": {
+    "gmtft": "./build/executables/gmtft.js"
+  },
   "dependencies": {
     "cli-table2": "0.2.0",
     "commander": "2.9.0",

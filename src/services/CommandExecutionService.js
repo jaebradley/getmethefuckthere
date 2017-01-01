@@ -10,9 +10,8 @@ export default class CommandExecutionService {
     this.directionsService = new DirectionsService();
   }
 
-  execute(origin, destination, travelMode) {
-    let search = CommandExecutionService.buildSearch(origin, destination, travelMode);
-    return this.getDirections(search);
+  execute(query) {
+    return this.getDirections(query.toDirectionsSearch());
   }
 
   getDirections(search) {
@@ -20,13 +19,5 @@ export default class CommandExecutionService {
                .fetch(search)
                .then(data => DirectionsTranslator.translate(data))
                .then(translation => TableCreator.create(translation));
-  }
-
-  static buildSearch(origin, destination, travelMode) {
-    return new DirectionsSearch({
-      origin: origin,
-      destination: destination,
-      travelMode: travelMode
-    });
   }
 }

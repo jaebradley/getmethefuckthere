@@ -4,24 +4,19 @@
 
 import program from 'commander';
 
-import CommandExecutionService from '../CommandExecutionService'
+import CommandExecutionService from '../services/CommandExecutionService'
+import CommandQuery from '../data/CommandQuery';
 
-let originValue;
-let destinationValue;
-
-program.version('0.0.1');
-program.option('-d', '--driving', 'use driving')
-       .option('-w', '--walking', 'use walking')
-       .option('-b', '--biking', 'use biking')
-       .option('-t', '--transit', 'use transit')
-       .arguments('<origin> <destination>')
-       .action((origin, destination) => {
-         originValue = origin;
-         destinationValue = destination;
-       })
+program.version('0.0.1')
+       .option('-t, --travel-mode <mode>', 'specify travel mode')
+       .option('-o, --origin <origin>', 'specify origin')
+       .option('-d, --destination <destination>', 'specify destination')
        .parse(process.argv);
 
 let service = new CommandExecutionService();
-console.log(program);
-console.log(program.driving);
-service.execute(originValue, destinationValue, 'DRIVING');
+let query = new CommandQuery({
+  origin: program.origin,
+  destination: program.destination,
+  travelMode: program.travelMode
+});
+service.execute(query);
