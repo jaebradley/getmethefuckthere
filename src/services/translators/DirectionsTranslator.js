@@ -1,8 +1,12 @@
 'use es6';
 
+import {List} from 'immutable';
+
 import Leg from '../../data/Leg';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
+
+import TravelModeIdentifier from '../TravelModeIdentifier';
 
 export default class DirectionsTranslator {
   static translate(result) {
@@ -20,7 +24,7 @@ export default class DirectionsTranslator {
 
     let routes = result['routes'];
 
-    if (!Arrays.isArray(routes)) {
+    if (!Array.isArray(routes)) {
       throw new TypeError('Routes are not an array');
     }
 
@@ -57,7 +61,7 @@ export default class DirectionsTranslator {
 
     return new Route({
       summary: summary,
-      warnings: warnings,
+      warnings: List(warnings),
       legs: List(legs.map(leg => DirectionsTranslator.translateLeg(leg)))
     });
   }
@@ -170,17 +174,7 @@ export default class DirectionsTranslator {
       distance: distanceDescription,
       duration: durationDescription,
       instructions: instructions,
-      mode: DirectionsTranslator.identifyTravelMode(travelMode)
+      mode: TravelModeIdentifier.identify(travelMode)
     });
-  }
-
-  static identifyTravelMode(value) {
-    for (let mode of TravelMode.enumValues) {
-      if (value === mode.value) {
-        return mode;
-      }
-    }
-
-    throw new ReferenceError('Cannot identify Travel Mode');
   }
 }
