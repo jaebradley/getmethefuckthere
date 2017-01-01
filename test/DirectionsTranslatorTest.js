@@ -65,6 +65,15 @@ describe('Test Directions Translator', function() {
     'legs': legs
   };
 
+  let routes = [
+    routeJson,
+    routeJson
+  ];
+  let resultJson = {
+    'status': 'OK',
+    'routes': routes
+  };
+
   let expectedStep = new Step({
     distance: distanceDescription,
     duration: durationDescription,
@@ -86,6 +95,11 @@ describe('Test Directions Translator', function() {
     legs: List.of(expectedLeg, expectedLeg)
   });
 
+  let expectedResult = List.of(
+    expectedRoute,
+    expectedRoute
+  );
+
   it('should translate step', function() {
     let translatedStep = DirectionsTranslator.translateStep(stepJson);
     expect(translatedStep).to.eql(expectedStep);
@@ -99,5 +113,10 @@ describe('Test Directions Translator', function() {
   it('should translate route', function() {
     let translatedRoute = DirectionsTranslator.translateRoute(routeJson);
     expect(translatedRoute).to.eql(expectedRoute);
+  });
+
+  it('should translate result', function() {
+    let translatedResult = DirectionsTranslator.translate(resultJson);
+    expect(translatedResult).to.eql(expectedResult);
   });
 });

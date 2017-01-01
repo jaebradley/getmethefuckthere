@@ -24,7 +24,7 @@ export default class DirectionsTranslator {
 
     let routes = result['routes'];
 
-    if (!Arrays.isArray(routes)) {
+    if (!Array.isArray(routes)) {
       throw new TypeError('Routes are not an array');
     }
 
