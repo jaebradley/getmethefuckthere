@@ -4,6 +4,8 @@ import Leg from '../../data/Leg';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
 
+import TravelModeIdentifier from '../TravelModeIdentifier';
+
 export default class DirectionsTranslator {
   static translate(result) {
     if (!('status' in result)) {
@@ -170,17 +172,7 @@ export default class DirectionsTranslator {
       distance: distanceDescription,
       duration: durationDescription,
       instructions: instructions,
-      mode: DirectionsTranslator.identifyTravelMode(travelMode)
+      mode: TravelModeIdentifier.identify(travelMode)
     });
-  }
-
-  static identifyTravelMode(value) {
-    for (let mode of TravelMode.enumValues) {
-      if (value === mode.value) {
-        return mode;
-      }
-    }
-
-    throw new ReferenceError('Cannot identify Travel Mode');
   }
 }

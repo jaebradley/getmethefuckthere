@@ -3,7 +3,7 @@
 import {Record} from 'immutable';
 
 import DirectionsSearch from './DirectionsSearch';
-import TravelMode from './TravelMode';
+import TravelModeIdentifier from '../services/TravelModeIdentifier';
 
 let defaults = {
   origin: '',
@@ -13,13 +13,7 @@ let defaults = {
 
 export default class CommandQuery extends Record(defaults) {
   identifyTravelMode() {
-    for (let mode of TravelMode.enumValues) {
-      if (travelMode.toLower() === mode.value) {
-        return mode;
-      }
-    }
-
-    throw new TypeError('Unable to identify travel mode');
+    return TravelModeIdentifier.identify(this.travelMode);
   }
 
   toDirectionsSearch() {
