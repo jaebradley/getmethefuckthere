@@ -3,6 +3,7 @@
 import DirectionsSearch from '../data/DirectionsSearch';
 import DirectionsService from './DirectionsService';
 import DirectionsTranslator from './translators/DirectionsTranslator';
+import TableCreator from './TableCreator';
 
 export default class CommandExecutionService {
   constructor() {
@@ -11,13 +12,14 @@ export default class CommandExecutionService {
 
   execute(origin, destination, travelMode) {
     let search = CommandExecutionService.buildSearch(origin, destination, travelMode);
-    return getDirections(search);
+    return this.getDirections(search);
   }
 
   getDirections(search) {
     return this.directionsService
                .fetch(search)
-               .then(data => DirectionsTranslator.translate(data));
+               .then(data => DirectionsTranslator.translate(data))
+               .then(translation => TableCreator.create(translation));
   }
 
   static buildSearch(origin, destination, travelMode) {
