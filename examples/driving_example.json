@@ -1,0 +1,285 @@
+{
+  "geocoded_waypoints": [
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJjVr9Ibxw44kR0o0vVgwOUAU",
+      "types": [
+        "premise"
+      ]
+    },
+    {
+      "geocoder_status": "OK",
+      "partial_match": true,
+      "place_id": "ChIJSSyJRu1w44kRTpX7b_wSl-M",
+      "types": [
+        "route"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "bounds": {
+        "northeast": {
+          "lat": 42.3753244,
+          "lng": -71.0619763
+        },
+        "southwest": {
+          "lat": 42.3691398,
+          "lng": -71.07713679999999
+        }
+      },
+      "copyrights": "Map data ©2016 Google",
+      "legs": [
+        {
+          "distance": {
+            "text": "1.2 mi",
+            "value": 1890
+          },
+          "duration": {
+            "text": "7 mins",
+            "value": 390
+          },
+          "duration_in_traffic": {
+            "text": "6 mins",
+            "value": 361
+          },
+          "end_address": "Harvard Square, Boston, MA 02129, USA",
+          "end_location": {
+            "lat": 42.3729527,
+            "lng": -71.06258609999999
+          },
+          "start_address": "25 First St, Cambridge, MA 02141, USA",
+          "start_location": {
+            "lat": 42.3697389,
+            "lng": -71.07713679999999
+          },
+          "steps": [
+            {
+              "distance": {
+                "text": "315 ft",
+                "value": 96
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 28
+              },
+              "end_location": {
+                "lat": 42.37058409999999,
+                "lng": -71.0769299
+              },
+              "html_instructions": "Head <b>north</b> on <b>First St</b> toward <b>Canal Park</b>",
+              "polyline": {
+                "points": "{iraGbgypLe@GaCa@"
+              },
+              "start_location": {
+                "lat": 42.3697389,
+                "lng": -71.07713679999999
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "180 ft",
+                "value": 55
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 20
+              },
+              "end_location": {
+                "lat": 42.3704916,
+                "lng": -71.0762768
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Cambridge St</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "coraGxeypLHcAF}@"
+              },
+              "start_location": {
+                "lat": 42.37058409999999,
+                "lng": -71.0769299
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "0.1 mi",
+                "value": 240
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 49
+              },
+              "end_location": {
+                "lat": 42.3694381,
+                "lng": -71.0737724
+              },
+              "html_instructions": "Slight <b>right</b> onto <b>MA-28 S</b>",
+              "maneuver": "turn-slight-right",
+              "polyline": {
+                "points": "qnraGvaypLHeADe@@GLe@R_@JUN_@t@gBL[b@iAXw@"
+              },
+              "start_location": {
+                "lat": 42.3704916,
+                "lng": -71.0762768
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "0.5 mi",
+                "value": 751
+              },
+              "duration": {
+                "text": "2 mins",
+                "value": 114
+              },
+              "end_location": {
+                "lat": 42.3740212,
+                "lng": -71.0682116
+              },
+              "html_instructions": "Turn <b>left</b> onto <b>Charlestown Ave</b>/<b>Gilmore Bridge</b><div style=\"font-size:0.9em\">Continue to follow Gilmore Bridge</div>",
+              "maneuver": "turn-left",
+              "polyline": {
+                "points": "_hraG`rxpLr@gBFUOSsAgAk@e@{AkAkA}@QM?AA?[W{BeByAkAGEgA{@eAy@k@e@k@e@GGCACEGGA?AACCMOCCKKQYEIAAAAACMWGSIWg@}B"
+              },
+              "start_location": {
+                "lat": 42.3694381,
+                "lng": -71.0737724
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "0.2 mi",
+                "value": 307
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 71
+              },
+              "end_location": {
+                "lat": 42.3752129,
+                "lng": -71.0648715
+              },
+              "html_instructions": "Continue onto <b>Austin St</b>",
+              "polyline": {
+                "points": "sdsaGhowpLQu@GYAC?AGWAA?AEQEWs@yCKi@GU?AAA?AMGQ{@EQ]uAMk@IYOc@EI"
+              },
+              "start_location": {
+                "lat": 42.3740212,
+                "lng": -71.0682116
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "190 ft",
+                "value": 58
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 12
+              },
+              "end_location": {
+                "lat": 42.3753244,
+                "lng": -71.0642198
+              },
+              "html_instructions": "Turn <b>right</b> to stay on <b>Austin St</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "alsaGlzvpLF[AK[yA"
+              },
+              "start_location": {
+                "lat": 42.3752129,
+                "lng": -71.0648715
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "0.2 mi",
+                "value": 326
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 75
+              },
+              "end_location": {
+                "lat": 42.3729653,
+                "lng": -71.0619763
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Main St</b>/<b>Thompson Square</b><div style=\"font-size:0.9em\">Continue to follow Main St</div>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "wlsaGjvvpL`Aq@nAu@JGJGLKNITOp@m@HQr@_B@Cj@}@nAy@HE"
+              },
+              "start_location": {
+                "lat": 42.3753244,
+                "lng": -71.0642198
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "148 ft",
+                "value": 45
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 14
+              },
+              "end_location": {
+                "lat": 42.3728686,
+                "lng": -71.06250419999999
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Henley St</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "a~raGjhvpLFPH`A@R"
+              },
+              "start_location": {
+                "lat": 42.3729653,
+                "lng": -71.0619763
+              },
+              "travel_mode": "DRIVING"
+            },
+            {
+              "distance": {
+                "text": "39 ft",
+                "value": 12
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 7
+              },
+              "end_location": {
+                "lat": 42.3729527,
+                "lng": -71.06258609999999
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Harvard Square</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "m}raGrkvpLOP"
+              },
+              "start_location": {
+                "lat": 42.3728686,
+                "lng": -71.06250419999999
+              },
+              "travel_mode": "DRIVING"
+            }
+          ],
+          "traffic_speed_entry": [],
+          "via_waypoint": []
+        }
+      ],
+      "overview_polyline": {
+        "points": "{iraGbgypLgDi@PaCNkBNm@^u@dAgC~BeGFUOS_CmByDyCiKeIsBeBUWe@q@Q]kA_FS{@kAmFI[MGQ{@c@gBWeAUm@F[AK[yA`Aq@zA}@XSd@Yp@m@HQt@cBj@}@nAy@HEFPJtAOP"
+      },
+      "summary": "Gilmore Bridge",
+      "warnings": [],
+      "waypoint_order": []
+    }
+  ],
+  "status": "OK"
+}

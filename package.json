@@ -14,10 +14,18 @@
   "preferGlobal": true,
   "main": "./build/index.js",
   "dependencies": {
-    "google-directions-client": "0.0.3"
+    "cli-table2": "0.2.0",
+    "commander": "2.9.0",
+    "enumify": "1.0.4",
+    "@google/maps": "0.3.1",
+    "immutable": "3.8.1",
+    "moment-timezone": "0.5.4",
+    "node-emoji": "1.3.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
+    "chai-immutable": "1.6.0",
     "mocha": "2.4.5",
     "coveralls": "2.11.9",
     "mocha-lcov-reporter": "1.2.0 ",
