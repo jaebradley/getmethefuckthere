@@ -15,32 +15,38 @@ export default class TableCreator {
     table.push([
       {
         content: route.summary,
-        colSpan: 2,
-        hAlign: 'center'
-      },
-      {
-        content: route.warnings.toJS().toString(),
-        colSpan: 2,
         hAlign: 'center'
       }
     ]);
+
+    if (!route.warnings.isEmpty()) {
+      table.push([
+        {
+          content: 'Warnings',
+          colSpan: 1,
+          hAlign: 'center'
+        },
+        {
+          content: route.warnings.toJS().toString(),
+          hAlign: 'center'
+        }
+      ]);
+    }
 
     route.legs.forEach(leg => TableCreator.createLegRow(table, leg));
     return table.toString();
   }
 
   static createLegRow(table, leg) {
-    table.push([
-      leg.distance,
-      leg.duration,
-      leg.start,
-      leg.end
-    ]);
-    leg.steps.forEach(step => table.push(TableCreator.createStepRow(step).toJS()));
+    table.push([`From ${leg.start} to ${leg.end} taking ${leg.duration} over ${leg.distance}`]);
+    for (let i = 0; i < leg.steps.size; i++) {
+      table.push(TableCreator.createStepRow(step, i).toJS());
+    }
   }
 
-  static createStepRow(step) {
+  static createStepRow(step, index) {
     return List.of(
+      `Step #${index + 1}`,
       step.distance,
       step.duration,
       step.instructions,
