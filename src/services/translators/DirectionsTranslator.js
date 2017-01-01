@@ -1,5 +1,7 @@
 'use es6';
 
+import {List} from 'immutable';
+
 import Leg from '../../data/Leg';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
@@ -59,7 +61,7 @@ export default class DirectionsTranslator {
 
     return new Route({
       summary: summary,
-      warnings: warnings,
+      warnings: List(warnings),
       legs: List(legs.map(leg => DirectionsTranslator.translateLeg(leg)))
     });
   }
