@@ -23,10 +23,13 @@ export default class DirectionsSearch extends Record(defaults) {
       destination: this.destination,
       origin: this.origin,
       mode: this.travelMode.value,
-      transit_mode: List(this.transitModes.map(mode => mode.value)),
       alternatives: this.useAlternatives,
       avoid: List(this.travelRestrictions.map(restriction => restriction.value)),
     });
+
+    if (this.travelMode == TravelMode.TRANSIT) {
+      parameters = parameters.set('transit_mode', List(this.transitModes.map(mode => mode.value)));
+    }
 
     if (this.travelMode !== TravelMode.TRANSIT) {
       parameters = parameters.set('traffic_model', this.trafficModel.value);
