@@ -1,6 +1,7 @@
 'use es6';
 
 import {List, Map} from 'immutable';
+import striptags from 'striptags';
 
 import Leg from '../../data/Leg';
 import Line from '../../data/Line';
@@ -183,7 +184,7 @@ export default class DirectionsTranslator {
       throw new TypeError('duration text field not a string');
     }
 
-    let instructions = step['html_instructions'];
+    let instructions = striptags(step['html_instructions']);
     if (typeof instructions !== 'string') {
       throw new TypeError('html instructions field not a string');
     }
