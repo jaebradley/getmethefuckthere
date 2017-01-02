@@ -1,6 +1,6 @@
 'use es6';
 
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
 
 import Leg from '../../data/Leg';
 import Line from '../../data/Line';
@@ -174,12 +174,18 @@ export default class DirectionsTranslator {
       throw new TypeError('travel mode field not a string');
     }
 
-    return new Step({
+    let parameters = Map({
       distance: distanceDescription,
       duration: durationDescription,
       instructions: instructions,
       mode: TravelModeIdentifier.identify(travelMode)
     });
+
+    if ('transit_details' in step) {
+      parameters = parameters.set('transitDetails', DirectionsTranslator.translateTransitDetails(step['transit_details']));
+    }
+
+    return new Step(parameters);
   }
 
   static translateTransitDetails(details) {

@@ -8,7 +8,8 @@ let defaults = {
   distance: '',
   duration: '',
   instructions: '',
-  mode: TravelMode.DRIVING
+  mode: TravelMode.DRIVING,
+  transitDetails: undefined,
 };
 
 export default class Step extends Record(defaults) {
