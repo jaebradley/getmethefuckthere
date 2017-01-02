@@ -12,5 +12,5 @@ let defaults = {
   line: new Line()
 };
 
-export default class TransitDetail extends Record(defaults){
+export default class TransitDetails extends Record(defaults){
 }

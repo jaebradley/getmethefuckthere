@@ -3,10 +3,14 @@
 import {List} from 'immutable';
 
 import Leg from '../../data/Leg';
+import Line from '../../data/Line';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
+import Time from '../../data/Time';
+import TransitDetails from '../../data/TransitDetails';
 
 import TravelModeIdentifier from '../TravelModeIdentifier';
+import VehicleIdentifier from '../VehicleIdentifier';
 
 export default class DirectionsTranslator {
   static translate(result) {
@@ -175,6 +179,45 @@ export default class DirectionsTranslator {
       duration: durationDescription,
       instructions: instructions,
       mode: TravelModeIdentifier.identify(travelMode)
+    });
+  }
+
+  static translateTransitDetails(details) {
+    let arrivalStopName = details['arrival_stop']['name'];
+    let arrivalTimeValue = details['arrival_time']['text'];
+    let arrivalTimezone = details['arrival_time']['time_zone'];
+
+    let departureStopName = details['departure_stop']['name'];
+    let departureTimeValue = details['departure_time']['text'];
+    let departureTimezone = details['departure_time']['time_zone'];
+
+    let line = details['line'];
+    let lineName = ('name' in line)
+      ? line['name']
+      : line['short_name'];
+
+    let agencyNames = List(line['agencies'].map(agency => agency.name));
+
+    return new TransitDetails({
+      arrival: new Stop({
+        name: arrivalStopName,
+        arrival: new Time({
+          value: arrivalTimeValue,
+          timezone: arrivalTimezone
+        })
+      }),
+      departure: new Stop({
+        name: departureStopName,
+        arrival: new Time({
+          value: departureTimeValue,
+          timezone: departureTimezone
+        })
+      }),
+      line: new Line({
+        name: lineName,
+        agencies: agencyNames,
+        vehicle: VehicleIdentifier.identify(line.vehicle.type)
+      })
     });
   }
 }
