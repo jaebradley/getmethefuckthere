@@ -1,0 +1,314 @@
+{
+  "geocoded_waypoints": [
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJ6fnJaCd344kRvZmxYKBnElo",
+      "types": [
+        "street_address"
+      ]
+    },
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJjVr9Ibxw44kR0o0vVgwOUAU",
+      "types": [
+        "premise"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "bounds": {
+        "northeast": {
+          "lat": 42.40009999999999,
+          "lng": -71.07653599999999
+        },
+        "southwest": {
+          "lat": 42.3697389,
+          "lng": -71.113418
+        }
+      },
+      "copyrights": "Map data ©2017 Google",
+      "legs": [
+        {
+          "arrival_time": {
+            "text": "9:31pm",
+            "time_zone": "America/New_York",
+            "value": 1483324311
+          },
+          "departure_time": {
+            "text": "9:13pm",
+            "time_zone": "America/New_York",
+            "value": 1483323229
+          },
+          "distance": {
+            "text": "3.2 mi",
+            "value": 5087
+          },
+          "duration": {
+            "text": "18 mins",
+            "value": 1082
+          },
+          "end_address": "25 First St, Cambridge, MA 02141, USA",
+          "end_location": {
+            "lat": 42.3697389,
+            "lng": -71.07713679999999
+          },
+          "start_address": "251 Willow Ave, Somerville, MA 02144, USA",
+          "start_location": {
+            "lat": 42.3990869,
+            "lng": -71.113418
+          },
+          "steps": [
+            {
+              "distance": {
+                "text": "0.1 mi",
+                "value": 202
+              },
+              "duration": {
+                "text": "2 mins",
+                "value": 143
+              },
+              "end_location": {
+                "lat": 42.39974000000001,
+                "lng": -71.111859
+              },
+              "html_instructions": "Walk to Broadway @ Josephine Ave - Ball Sq",
+              "polyline": {
+                "points": "iaxaGzi`qL}BwAkAw@n@gCJ[JC"
+              },
+              "start_location": {
+                "lat": 42.3990869,
+                "lng": -71.113418
+              },
+              "steps": [
+                {
+                  "distance": {
+                    "text": "417 ft",
+                    "value": 127
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 87
+                  },
+                  "end_location": {
+                    "lat": 42.40009999999999,
+                    "lng": -71.11270039999999
+                  },
+                  "html_instructions": "Head <b>northeast</b> on <b>Willow Ave</b> toward <b>Broadway</b>",
+                  "polyline": {
+                    "points": "iaxaGzi`qL}BwAkAw@"
+                  },
+                  "start_location": {
+                    "lat": 42.3990869,
+                    "lng": -71.113418
+                  },
+                  "travel_mode": "WALKING"
+                },
+                {
+                  "distance": {
+                    "text": "246 ft",
+                    "value": 75
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 56
+                  },
+                  "end_location": {
+                    "lat": 42.39974000000001,
+                    "lng": -71.111859
+                  },
+                  "html_instructions": "Turn <b>right</b> onto <b>Broadway</b>",
+                  "maneuver": "turn-right",
+                  "polyline": {
+                    "points": "sgxaGje`qLn@gCJ[JC"
+                  },
+                  "start_location": {
+                    "lat": 42.40009999999999,
+                    "lng": -71.11270039999999
+                  },
+                  "travel_mode": "WALKING"
+                }
+              ],
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "2.9 mi",
+                "value": 4745
+              },
+              "duration": {
+                "text": "14 mins",
+                "value": 840
+              },
+              "end_location": {
+                "lat": 42.370772,
+                "lng": -71.07653599999999
+              },
+              "html_instructions": "Bus towards Lechmere",
+              "polyline": {
+                "points": "kexaGb``qLGEZqAv@_DNq@Nm@t@}Cn@oCj@aCHe@BOt@kDr@}CTeA`@mBFUf@aC|AeAbBmAhCoBLKvAaAbBuAtBwAXS@?jA{@z@q@pCmBNMrBqBpBuBVY|@_A|A_BtAsATUhCqCLMbDmD`@wBz@{DBKf@eCLk@\\cBDUj@iCRy@Je@`@wB^cBFUH_@jA^|Bl@dATbC`@dBXx@NPBT?TAVGnAs@p@g@NKhAi@l@_@l@_@`@Q`@OdAUv@KFMJOJIPENELAB?F?LAHBDFBLPCd@KlASbAOtFw@vAUp@W`@wAZy@@Cx@}Bp@eBf@kAl@w@\\c@Vg@ZeAzAoDz@{Bf@uAvByF@At@{BDKh@sAx@qBdBiETk@Zu@v@kBd@iA`@oAVy@ZiA^SJENYZy@t@_B"
+              },
+              "start_location": {
+                "lat": 42.39974000000001,
+                "lng": -71.111859
+              },
+              "transit_details": {
+                "arrival_stop": {
+                  "location": {
+                    "lat": 42.370772,
+                    "lng": -71.07653599999999
+                  },
+                  "name": "Lechmere"
+                },
+                "arrival_time": {
+                  "text": "9:29pm",
+                  "time_zone": "America/New_York",
+                  "value": 1483324192
+                },
+                "departure_stop": {
+                  "location": {
+                    "lat": 42.39974000000001,
+                    "lng": -71.111859
+                  },
+                  "name": "Broadway @ Josephine Ave - Ball Sq"
+                },
+                "departure_time": {
+                  "text": "9:16pm",
+                  "time_zone": "America/New_York",
+                  "value": 1483323362
+                },
+                "headsign": "Lechmere",
+                "line": {
+                  "agencies": [
+                    {
+                      "name": "MBTA",
+                      "phone": "1 (617) 222-3200",
+                      "url": "http://www.mbta.com/"
+                    }
+                  ],
+                  "color": "#fff176",
+                  "short_name": "80",
+                  "text_color": "#000000",
+                  "vehicle": {
+                    "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/bus2.png",
+                    "name": "Bus",
+                    "type": "BUS"
+                  }
+                },
+                "num_stops": 17
+              },
+              "travel_mode": "TRANSIT"
+            },
+            {
+              "distance": {
+                "text": "459 ft",
+                "value": 140
+              },
+              "duration": {
+                "text": "2 mins",
+                "value": 118
+              },
+              "end_location": {
+                "lat": 42.3697389,
+                "lng": -71.07713679999999
+              },
+              "html_instructions": "Walk to 25 First St, Cambridge, MA 02141, USA",
+              "polyline": {
+                "points": "ipraGjcypLGNJFDBBBB@DDC^PD`C`@d@F"
+              },
+              "start_location": {
+                "lat": 42.370772,
+                "lng": -71.07653599999999
+              },
+              "steps": [
+                {
+                  "distance": {
+                    "text": "69 ft",
+                    "value": 21
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 21
+                  },
+                  "end_location": {
+                    "lat": 42.3706454,
+                    "lng": -71.0767408
+                  },
+                  "html_instructions": "Head <b>southwest</b> toward <b>Cambridge St</b>",
+                  "polyline": {
+                    "points": "ipraGjcypLGNJFDBBBB@DD"
+                  },
+                  "start_location": {
+                    "lat": 42.370772,
+                    "lng": -71.07653599999999
+                  },
+                  "travel_mode": "WALKING"
+                },
+                {
+                  "distance": {
+                    "text": "46 ft",
+                    "value": 14
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 10
+                  },
+                  "end_location": {
+                    "lat": 42.3706651,
+                    "lng": -71.076903
+                  },
+                  "html_instructions": "Turn <b>right</b> onto <b>Cambridge St</b>",
+                  "maneuver": "turn-right",
+                  "polyline": {
+                    "points": "qoraGrdypLC^"
+                  },
+                  "start_location": {
+                    "lat": 42.3706454,
+                    "lng": -71.0767408
+                  },
+                  "travel_mode": "WALKING"
+                },
+                {
+                  "distance": {
+                    "text": "344 ft",
+                    "value": 105
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 87
+                  },
+                  "end_location": {
+                    "lat": 42.3697389,
+                    "lng": -71.07713679999999
+                  },
+                  "html_instructions": "Turn <b>left</b> onto <b>First St</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                  "maneuver": "turn-left",
+                  "polyline": {
+                    "points": "uoraGreypLPD`C`@d@F"
+                  },
+                  "start_location": {
+                    "lat": 42.3706651,
+                    "lng": -71.076903
+                  },
+                  "travel_mode": "WALKING"
+                }
+              ],
+              "travel_mode": "WALKING"
+            }
+          ],
+          "traffic_speed_entry": [],
+          "via_waypoint": []
+        }
+      ],
+      "overview_polyline": {
+        "points": "iaxaGzi`qLiEoCz@cDJCGEZqAlC}KdBwHx@{DhAcFpAeG`EsCvC{BvAaAbBuAtBwAZSfCmBpCmBbC_CfEoEhEiEzHmIhCeMp@eD~@cEl@}Cp@yChElAhEv@~Ch@f@Bl@InAs@p@g@NKvBiAnAq@`@OdAUv@KFMVYr@MF?V@HTv@OpCc@lImAp@W`@wAZy@z@aCxAqDjA{AVg@ZeAvCkH~CoIfB}EtDgJrAaDfAyCr@cCj@Yj@sAt@_BGNPJFDDDC^rCf@d@F"
+      },
+      "summary": "",
+      "warnings": [
+        "Walking directions are in beta.    Use caution – This route may be missing sidewalks or pedestrian paths."
+      ],
+      "waypoint_order": []
+    }
+  ],
+  "status": "OK"
+}

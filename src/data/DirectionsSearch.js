@@ -19,7 +19,6 @@ let defaults = {
 
 export default class DirectionsSearch extends Record(defaults) {
   toParameters() {
-    let travelTimeFilterParameter = this.travelTimeFilter.toParameter();
     let parameters = Map({
       destination: this.destination,
       origin: this.origin,
@@ -27,8 +26,13 @@ export default class DirectionsSearch extends Record(defaults) {
       transit_mode: List(this.transitModes.map(mode => mode.value)),
       alternatives: this.useAlternatives,
       avoid: List(this.travelRestrictions.map(restriction => restriction.value)),
-      traffic_model: this.trafficModel.value,
     });
-    return parameters.merge(travelTimeFilterParameter);
+
+    if (this.travelMode === TravelMode.DRIVING) {
+      parameters = parameters.set('traffic_model', this.trafficModel.value);
+      parameters = parameters.merge(this.travelTimeFilter.toParameter());
+    }
+
+    return parameters;
   }
 }
