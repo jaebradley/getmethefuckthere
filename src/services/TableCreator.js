@@ -4,7 +4,7 @@ import {List} from 'immutable';
 
 import Table from 'cli-table2';
 
-import Line from '../data/Line';
+import Time from '../data/Time';
 import TransitDetails from '../data/TransitDetails';
 
 export default class TableCreator {
@@ -100,10 +100,18 @@ export default class TableCreator {
     if (step.transitDetails instanceof TransitDetails) {
       table.push(
         [
-          `Riding ${step.transitDetails.stopCount} stops on the ${step.transitDetails.line.name} ${step.transitDetails.line.vehicle.emoji}`
+          {
+            content: `Riding ${step.transitDetails.stopCount} stops on the ${step.transitDetails.line.name} ${step.transitDetails.line.vehicle.emoji}`,
+            colSpan: 5,
+            hAlign: 'center'
+          }
         ],
         [
-          `Departing ${step.transitDetails.departure.name} at ${step.transitDetails.departure.arrival.value} and arriving at ${step.transitDetails.arrival.name} at ${step.transitDetails.arrival.arrival.value}`
+          {
+            content: `Departing ${step.transitDetails.departure.name} at ${step.transitDetails.departure.arrival.value} and arriving at ${step.transitDetails.arrival.name} at ${step.transitDetails.arrival.arrival.value}`,
+            colSpan: 5,
+            hAlign: 'center'
+          }
         ]
       )
     }
