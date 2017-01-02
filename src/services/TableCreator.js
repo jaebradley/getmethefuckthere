@@ -4,6 +4,9 @@ import {List} from 'immutable';
 
 import Table from 'cli-table2';
 
+import Line from '../data/Line';
+import TransitDetails from '../data/TransitDetails';
+
 export default class TableCreator {
   static create(routes) {
     return List(routes.map(route => TableCreator.createRouteTable(route)));
@@ -88,21 +91,21 @@ export default class TableCreator {
         hAlign: 'center'
       },
       {
-        content: step.mode.emoji
+        content: step.mode.emoji,
         colSpan: 1,
         hAlign: 'center'
       }
     ]);
-  }
 
-  if (step.transitDetails instanceof TransitDetails) {
-    table.push(
-      [
-        `Riding ${step.transitDetails.stopCount} stops on the ${step.transitDetails.line.name} ${step.transitDetails.line.vehicle.emoji}`
-      ],
-      [
-        `Departing ${step.transitDetails.departure.name} at ${step.transitDetails.departure.arrival.value} and arriving at ${step.transitDetails.arrival.name} at ${step.transitDetails.arrival.arrival.value}`
-      ]
-    )
+    if (step.transitDetails instanceof TransitDetails) {
+      table.push(
+        [
+          `Riding ${step.transitDetails.stopCount} stops on the ${step.transitDetails.line.name} ${step.transitDetails.line.vehicle.emoji}`
+        ],
+        [
+          `Departing ${step.transitDetails.departure.name} at ${step.transitDetails.departure.arrival.value} and arriving at ${step.transitDetails.arrival.name} at ${step.transitDetails.arrival.arrival.value}`
+        ]
+      )
+    }
   }
 }

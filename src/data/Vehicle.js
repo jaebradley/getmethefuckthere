@@ -2,6 +2,8 @@
 
 import {Enum} from 'enumify';
 
+import emoji from 'node-emoji';
+
 export default class Vehicle extends Enum {};
 
 Vehicle.initEnum({
