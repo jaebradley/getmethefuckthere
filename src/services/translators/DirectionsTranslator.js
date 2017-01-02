@@ -209,20 +209,77 @@ export default class DirectionsTranslator {
   }
 
   static translateTransitDetails(details) {
-    let arrivalStopName = details['arrival_stop']['name'];
-    let arrivalTimeValue = details['arrival_time']['text'];
-    let arrivalTimezone = details['arrival_time']['time_zone'];
+    if (!('arrival_stop' in details)) {
+      throw new ReferenceError('arrival stop field not found in details');
+    }
 
-    let departureStopName = details['departure_stop']['name'];
-    let departureTimeValue = details['departure_time']['text'];
-    let departureTimezone = details['departure_time']['time_zone'];
+    if (!('departure_stop' in details)) {
+      throw new ReferenceError('departure stop field not found in details');
+    }
 
-    let line = details['line'];
-    let lineName = ('name' in line)
-      ? line['name']
-      : line['short_name'];
+    if (!('arrival_time' in details)) {
+      throw new ReferenceError('arrival time field not found in details');
+    }
 
-    let agencyNames = List(line['agencies'].map(agency => agency.name));
+    if (!('departure_time' in details)) {
+      throw new ReferenceError('departure time field not found in details');
+    }
+
+    if (!('name' in details['arrival_stop'])) {
+      throw new ReferenceError('name field not found in arrival stop');
+    }
+
+    if (!('name' in details['departure_stop'])) {
+      throw new ReferenceError('name field not found in departure stop');
+    }
+
+    if (!('text' in details['arrival_time'])) {
+      throw new ReferenceError('text field not found in arrival time');
+    }
+
+    if (!('text' in details['departure_time'])) {
+      throw new ReferenceError('text field not found in departure time');
+    }
+
+    if (!('time_zone' in details['arrival_time'])) {
+      throw new ReferenceError('time zone field not found in arrival time');
+    }
+
+    if (!('time_zone' in details['departure_time'])) {
+      throw new ReferenceError('time zone field not found in departure time');
+    }
+
+    if (!('num_stops' in details)) {
+      throw new ReferenceError('num stops field not found in details');
+    }
+
+    if (!('line' in details)) {
+      throw new ReferenceError('line field not found in details');
+    }
+
+    let line = details.line;
+    if (!('agencies' in line)) {
+      throw new ReferenceError('Agencies field not found in line');
+    }
+
+    let lineName;
+    if ('name' in line) {
+      lineName = line.name;
+    } else if('short_name' in line) {
+      lineName = line.short_name;
+    } else {
+      throw new ReferenceError('Unable to identify line name');
+    }
+
+    let arrivalStopName = details.arrival_stop.name;
+    let arrivalTimeValue = details.arrival_time.text;
+    let arrivalTimezone = details.arrival_time.time_zone;
+
+    let departureStopName = details.departure_stop.name;
+    let departureTimeValue = details.departure_time.text;
+    let departureTimezone = details.departure_time.time_zone;
+
+    let agencyNames = List(line.agencies.map(agency => agency.name));
 
     return new TransitDetails({
       arrival: new Stop({
@@ -244,7 +301,7 @@ export default class DirectionsTranslator {
         agencies: agencyNames,
         vehicle: VehicleIdentifier.identify(line.vehicle.type)
       }),
-      stopCount: details['num_stops']
+      stopCount: details.num_stops
     });
   }
 }
