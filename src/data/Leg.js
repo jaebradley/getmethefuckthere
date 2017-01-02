@@ -7,6 +7,8 @@ let defaults = {
   duration: '',
   start: '',
   end: '',
+  arrivalTime: undefined,
+  departureTime: undefined,
   steps: List()
 };
 

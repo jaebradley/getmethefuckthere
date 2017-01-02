@@ -120,13 +120,31 @@ export default class DirectionsTranslator {
       throw new TypeError('steps field not an array');
     }
 
-    return new Leg({
+    let parameters = Map({
       distance: distanceDescription,
       duration: durationDescription,
       end: end,
       start: start,
       steps: List(steps.map(step => DirectionsTranslator.translateStep(step)))
     });
+
+    if ('arrival_time' in leg) {
+      let arrivalTime = new Time({
+        value: leg['arrival_time']['text'],
+        timezone: leg['arrival_time']['time_zone']
+      });
+      parameters = parameters.set('arrivalTime', arrivalTime);
+    }
+
+    if ('departure_time' in leg) {
+      let departureTime = new Time({
+        value: leg['departure_time']['text'],
+        timezone: leg['departure_time']['time_zone']
+      });
+      parameters = parameters.set('departureTime', departureTime);
+    }
+
+    return new Leg(parameters);
   }
 
   static translateStep(step) {
