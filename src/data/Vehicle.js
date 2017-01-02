@@ -6,6 +6,7 @@ export default class Vehicle extends Enum {};
 
 Vehicle.initEnum({
   BUS: {
-    value: 'bus'
+    value: 'BUS',
+    emoji: emoji.get('bus')
   }
 });

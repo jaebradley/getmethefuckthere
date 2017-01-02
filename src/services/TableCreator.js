@@ -12,13 +12,17 @@ export default class TableCreator {
   static createRouteTable(route) {
     let table = new Table();
 
-    table.push([
-      {
-        content: route.summary,
-        colSpan: 5,
-        hAlign: 'center'
-      }
-    ]);
+    route.legs.forEach(leg => TableCreator.createLegRow(table, leg));
+
+    if (route.summary !== "") {
+      table.push([
+        {
+          content: route.summary,
+          colSpan: 5,
+          hAlign: 'center'
+        }
+      ]);
+    }
 
     if (!route.warnings.isEmpty()) {
       table.push([
@@ -35,7 +39,6 @@ export default class TableCreator {
       ]);
     }
 
-    route.legs.forEach(leg => TableCreator.createLegRow(table, leg));
     return table.toString();
   }
 
@@ -47,18 +50,59 @@ export default class TableCreator {
         hAlign: 'center'
       }
     ]);
+
+    if ((leg.departureTime instanceof Time) && (leg.arrivalTime instanceof Time)) {
+      table.push([
+        {
+          content: `Departing at ${leg.departureTime.value} and arriving at ${leg.arrivalTime.value}`,
+          colSpan: 5
+        }
+      ])
+    }
+
     for (let i = 0; i < leg.steps.size; i++) {
-      table.push(TableCreator.createStepRow(leg.steps.get(i), i).toJS());
+      TableCreator.createStepRow(table, leg.steps.get(i), i);
     }
   }
 
-  static createStepRow(step, index) {
-    return List.of(
-      `Step #${index + 1}`,
-      step.distance,
-      step.duration,
-      step.instructions,
-      step.mode.emoji
-    );
+  static createStepRow(table, step, index) {
+    table.push([
+      {
+        content: `Step #${index + 1}`,
+        colSpan: 1,
+        hAlign: 'center'
+      },
+      {
+        content: step.distance,
+        colSpan: 1,
+        hAlign: 'center'
+      },
+      {
+        content: step.duration,
+        colSpan: 1,
+        hAlign: 'center'
+      },
+      {
+        content: step.instructions,
+        colSpan: 1,
+        hAlign: 'center'
+      },
+      {
+        content: step.mode.emoji
+        colSpan: 1,
+        hAlign: 'center'
+      }
+    ]);
+  }
+
+  if (step.transitDetails instanceof TransitDetails) {
+    table.push(
+      [
+        `Riding ${step.transitDetails.stopCount} stops on the ${step.transitDetails.line.name} ${step.transitDetails.line.vehicle.emoji}`
+      ],
+      [
+        `Departing ${step.transitDetails.departure.name} at ${step.transitDetails.departure.arrival.value} and arriving at ${step.transitDetails.arrival.name} at ${step.transitDetails.arrival.arrival.value}`
+      ]
+    )
   }
 }
