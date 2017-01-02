@@ -71,7 +71,6 @@ describe('Test Directions Search', function() {
       mode: drivingMode.value,
       alternatives: useAlternatives,
       avoid: List.of(travelRestriction1.value, travelRestriction2.value),
-      transit_mode: List.of(transitMode1.value, transitMode2.value),
       traffic_model: trafficModel.value,
     });
     expected = expected.merge(travelTimeFilter.toParameter());
