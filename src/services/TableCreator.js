@@ -15,6 +15,7 @@ export default class TableCreator {
     table.push([
       {
         content: route.summary,
+        colSpan: 5,
         hAlign: 'center'
       }
     ]);
@@ -28,6 +29,7 @@ export default class TableCreator {
         },
         {
           content: route.warnings.toJS().toString(),
+          colSpan: 4,
           hAlign: 'center'
         }
       ]);
@@ -38,9 +40,15 @@ export default class TableCreator {
   }
 
   static createLegRow(table, leg) {
-    table.push([`From ${leg.start} to ${leg.end} taking ${leg.duration} over ${leg.distance}`]);
+    table.push([
+      {
+        content: `From ${leg.start} to ${leg.end} taking ${leg.duration} over ${leg.distance}`,
+        colSpan: 5,
+        hAlign: 'center'
+      }
+    ]);
     for (let i = 0; i < leg.steps.size; i++) {
-      table.push(TableCreator.createStepRow(step, i).toJS());
+      table.push(TableCreator.createStepRow(leg.steps.get(i), i).toJS());
     }
   }
 
