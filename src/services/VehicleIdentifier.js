@@ -9,7 +9,7 @@ export default class VehicldeIdentifier {
     }
 
     for (let mode of Vehicle.enumValues) {
-      if (value.toLowerCase() === mode.value) {
+      if (value.toUpperCase() === mode.value) {
         return mode;
       }
     }

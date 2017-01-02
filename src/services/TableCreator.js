@@ -20,8 +20,13 @@ export default class TableCreator {
     if (route.summary !== "") {
       table.push([
         {
+          content: 'Summary',
+          colSpan: 1,
+          hAlign: 'center'
+        },
+        {
           content: route.summary,
-          colSpan: 5,
+          colSpan: 4,
           hAlign: 'center'
         }
       ]);
@@ -58,7 +63,8 @@ export default class TableCreator {
       table.push([
         {
           content: `Departing at ${leg.departureTime.value} and arriving at ${leg.arrivalTime.value}`,
-          colSpan: 5
+          colSpan: 5,
+          hAlign: 'center'
         }
       ])
     }

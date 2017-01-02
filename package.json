@@ -1,6 +1,6 @@
 {
   "name": "getmethefuckthere",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Get directions to wherever the fuck",
   "scripts": {
     "test": "npm run build && mocha --compilers js:babel-core/register",

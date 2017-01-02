@@ -6,6 +6,7 @@ import Leg from '../../data/Leg';
 import Line from '../../data/Line';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
+import Stop from '../../data/Stop';
 import Time from '../../data/Time';
 import TransitDetails from '../../data/TransitDetails';
 
@@ -241,7 +242,8 @@ export default class DirectionsTranslator {
         name: lineName,
         agencies: agencyNames,
         vehicle: VehicleIdentifier.identify(line.vehicle.type)
-      })
+      }),
+      stopCount: details['num_stops']
     });
   }
 }
