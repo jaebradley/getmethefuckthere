@@ -31,7 +31,7 @@ describe('Test Travel Time Filter', function() {
       type: TravelTimeFilterType.ARRIVAL
     });
     let arrivalExpected = Map({
-      'arrival_time': datetime.valueOf();
+      'arrival_time': datetime.valueOf()
     });
     expect(arrivalFilter.toParameter()).to.eql(arrivalExpected);
   });
