@@ -45,7 +45,7 @@ describe('Test Directions Search', function() {
     let expected = Map({
       destination: destination,
       origin: origin,
-      mode: travelMode.value,
+      mode: transitMode.value,
       alternatives: useAlternatives,
       avoid: List.of(travelRestriction1.value, travelRestriction2.value),
       transit_mode: List.of(transitMode1.value, transitMode2.value)
@@ -68,7 +68,7 @@ describe('Test Directions Search', function() {
     let expected = Map({
       destination: destination,
       origin: origin,
-      mode: travelMode.value,
+      mode: drivingMode.value,
       alternatives: useAlternatives,
       avoid: List.of(travelRestriction1.value, travelRestriction2.value),
       transit_mode: List.of(transitMode1.value, transitMode2.value),
