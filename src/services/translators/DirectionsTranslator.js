@@ -1,12 +1,18 @@
 'use es6';
 
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
+import striptags from 'striptags';
 
 import Leg from '../../data/Leg';
+import Line from '../../data/Line';
 import Route from '../../data/Route';
 import Step from '../../data/Step';
+import Stop from '../../data/Stop';
+import Time from '../../data/Time';
+import TransitDetails from '../../data/TransitDetails';
 
 import TravelModeIdentifier from '../TravelModeIdentifier';
+import VehicleIdentifier from '../VehicleIdentifier';
 
 export default class DirectionsTranslator {
   static translate(result) {
@@ -116,13 +122,31 @@ export default class DirectionsTranslator {
       throw new TypeError('steps field not an array');
     }
 
-    return new Leg({
+    let parameters = Map({
       distance: distanceDescription,
       duration: durationDescription,
       end: end,
       start: start,
       steps: List(steps.map(step => DirectionsTranslator.translateStep(step)))
     });
+
+    if ('arrival_time' in leg) {
+      let arrivalTime = new Time({
+        value: leg['arrival_time']['text'],
+        timezone: leg['arrival_time']['time_zone']
+      });
+      parameters = parameters.set('arrivalTime', arrivalTime);
+    }
+
+    if ('departure_time' in leg) {
+      let departureTime = new Time({
+        value: leg['departure_time']['text'],
+        timezone: leg['departure_time']['time_zone']
+      });
+      parameters = parameters.set('departureTime', departureTime);
+    }
+
+    return new Leg(parameters);
   }
 
   static translateStep(step) {
@@ -160,7 +184,7 @@ export default class DirectionsTranslator {
       throw new TypeError('duration text field not a string');
     }
 
-    let instructions = step['html_instructions'];
+    let instructions = striptags(step['html_instructions']);
     if (typeof instructions !== 'string') {
       throw new TypeError('html instructions field not a string');
     }
@@ -170,11 +194,57 @@ export default class DirectionsTranslator {
       throw new TypeError('travel mode field not a string');
     }
 
-    return new Step({
+    let parameters = Map({
       distance: distanceDescription,
       duration: durationDescription,
       instructions: instructions,
       mode: TravelModeIdentifier.identify(travelMode)
+    });
+
+    if ('transit_details' in step) {
+      parameters = parameters.set('transitDetails', DirectionsTranslator.translateTransitDetails(step['transit_details']));
+    }
+
+    return new Step(parameters);
+  }
+
+  static translateTransitDetails(details) {
+    let arrivalStopName = details['arrival_stop']['name'];
+    let arrivalTimeValue = details['arrival_time']['text'];
+    let arrivalTimezone = details['arrival_time']['time_zone'];
+
+    let departureStopName = details['departure_stop']['name'];
+    let departureTimeValue = details['departure_time']['text'];
+    let departureTimezone = details['departure_time']['time_zone'];
+
+    let line = details['line'];
+    let lineName = ('name' in line)
+      ? line['name']
+      : line['short_name'];
+
+    let agencyNames = List(line['agencies'].map(agency => agency.name));
+
+    return new TransitDetails({
+      arrival: new Stop({
+        name: arrivalStopName,
+        arrival: new Time({
+          value: arrivalTimeValue,
+          timezone: arrivalTimezone
+        })
+      }),
+      departure: new Stop({
+        name: departureStopName,
+        arrival: new Time({
+          value: departureTimeValue,
+          timezone: departureTimezone
+        })
+      }),
+      line: new Line({
+        name: lineName,
+        agencies: agencyNames,
+        vehicle: VehicleIdentifier.identify(line.vehicle.type)
+      }),
+      stopCount: details['num_stops']
     });
   }
 }

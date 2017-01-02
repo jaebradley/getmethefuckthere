@@ -1,0 +1,292 @@
+{
+  "geocoded_waypoints": [
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJ6fnJaCd344kRvZmxYKBnElo",
+      "types": [
+        "street_address"
+      ]
+    },
+    {
+      "geocoder_status": "OK",
+      "partial_match": true,
+      "place_id": "ChIJC6878kJ344kRrqqrxEU1zAc",
+      "types": [
+        "premise"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "bounds": {
+        "northeast": {
+          "lat": 42.3994436,
+          "lng": -71.113418
+        },
+        "southwest": {
+          "lat": 42.373362,
+          "lng": -71.1219632
+        }
+      },
+      "copyrights": "Map data ©2017 Google",
+      "legs": [
+        {
+          "arrival_time": {
+            "text": "10:11pm",
+            "time_zone": "America/New_York",
+            "value": 1483326663
+          },
+          "departure_time": {
+            "text": "9:53pm",
+            "time_zone": "America/New_York",
+            "value": 1483325627
+          },
+          "distance": {
+            "text": "2.4 mi",
+            "value": 3788
+          },
+          "duration": {
+            "text": "17 mins",
+            "value": 1036
+          },
+          "end_address": "Harvard Square Theatre, 1420 Massachusetts Ave, Cambridge, MA 02138, USA",
+          "end_location": {
+            "lat": 42.3739861,
+            "lng": -71.11892229999999
+          },
+          "start_address": "251 Willow Ave, Somerville, MA 02144, USA",
+          "start_location": {
+            "lat": 42.3990869,
+            "lng": -71.113418
+          },
+          "steps": [
+            {
+              "distance": {
+                "text": "0.6 mi",
+                "value": 974
+              },
+              "duration": {
+                "text": "12 mins",
+                "value": 708
+              },
+              "end_location": {
+                "lat": 42.39674,
+                "lng": -71.121815
+              },
+              "html_instructions": "Walk to Davis",
+              "polyline": {
+                "points": "iaxaGzi`qLHD~FjDHFCHu@vCw@xCy@xCcAnDcApDYbACDABEFHPHTJXHR`@nAfAfDN^N\\FJFJLLDFJJJJFDJHf@VjAj@LHxAr@z@["
+              },
+              "start_location": {
+                "lat": 42.3990869,
+                "lng": -71.113418
+              },
+              "steps": [
+                {
+                  "distance": {
+                    "text": "0.1 mi",
+                    "value": 171
+                  },
+                  "duration": {
+                    "text": "2 mins",
+                    "value": 126
+                  },
+                  "end_location": {
+                    "lat": 42.3977093,
+                    "lng": -71.1143517
+                  },
+                  "html_instructions": "Head <b>southwest</b> on <b>Willow Ave</b> toward <b>Mallet St</b>",
+                  "polyline": {
+                    "points": "iaxaGzi`qLHD~FjDHF"
+                  },
+                  "start_location": {
+                    "lat": 42.3990869,
+                    "lng": -71.113418
+                  },
+                  "travel_mode": "WALKING"
+                },
+                {
+                  "distance": {
+                    "text": "0.3 mi",
+                    "value": 421
+                  },
+                  "duration": {
+                    "text": "5 mins",
+                    "value": 316
+                  },
+                  "end_location": {
+                    "lat": 42.3994436,
+                    "lng": -71.1189036
+                  },
+                  "html_instructions": "Turn <b>right</b> onto <b>Kidder Ave</b>",
+                  "maneuver": "turn-right",
+                  "polyline": {
+                    "points": "uxwaGto`qLCHu@vCw@xCy@xCcAnDcApDYbACDABEF"
+                  },
+                  "start_location": {
+                    "lat": 42.3977093,
+                    "lng": -71.1143517
+                  },
+                  "travel_mode": "WALKING"
+                },
+                {
+                  "distance": {
+                    "text": "0.2 mi",
+                    "value": 382
+                  },
+                  "duration": {
+                    "text": "4 mins",
+                    "value": 266
+                  },
+                  "end_location": {
+                    "lat": 42.39674,
+                    "lng": -71.121815
+                  },
+                  "html_instructions": "Turn <b>left</b> onto <b>College Ave</b>",
+                  "maneuver": "turn-left",
+                  "polyline": {
+                    "points": "ocxaGblaqLHPHTJXHR`@nAfAfDN^N\\FJFJLLDFJJJJFDJHf@VjAj@LHxAr@z@["
+                  },
+                  "start_location": {
+                    "lat": 42.3994436,
+                    "lng": -71.1189036
+                  },
+                  "travel_mode": "WALKING"
+                }
+              ],
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "1.7 mi",
+                "value": 2768
+              },
+              "duration": {
+                "text": "5 mins",
+                "value": 300
+              },
+              "end_location": {
+                "lat": 42.373362,
+                "lng": -71.118956
+              },
+              "html_instructions": "Subway towards Ashmont",
+              "polyline": {
+                "points": "srwaGj~aqLLDNw@\\iAt@qB`AwBl@cAl@m@b@Yn@QrBEtCKxQ_A|LRR@T?~l@hD`Np@jAF|@CbB_@fBk@n@q@d@gA`@}@Z_@RMZIl@@fBFlB\\tAP~@L^?HCBCN^"
+              },
+              "start_location": {
+                "lat": 42.39674,
+                "lng": -71.121815
+              },
+              "transit_details": {
+                "arrival_stop": {
+                  "location": {
+                    "lat": 42.373362,
+                    "lng": -71.118956
+                  },
+                  "name": "Harvard"
+                },
+                "arrival_time": {
+                  "text": "10:10pm",
+                  "time_zone": "America/New_York",
+                  "value": 1483326623
+                },
+                "departure_stop": {
+                  "location": {
+                    "lat": 42.39674,
+                    "lng": -71.121815
+                  },
+                  "name": "Davis"
+                },
+                "departure_time": {
+                  "text": "10:05pm",
+                  "time_zone": "America/New_York",
+                  "value": 1483326335
+                },
+                "headsign": "Ashmont",
+                "line": {
+                  "agencies": [
+                    {
+                      "name": "MBTA",
+                      "phone": "1 (617) 222-3200",
+                      "url": "http://www.mbta.com/"
+                    }
+                  ],
+                  "color": "#d32f2f",
+                  "name": "Red Line",
+                  "text_color": "#ffffff",
+                  "vehicle": {
+                    "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/subway2.png",
+                    "local_icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/us-ma-boston.png",
+                    "name": "Subway",
+                    "type": "SUBWAY"
+                  }
+                },
+                "num_stops": 2
+              },
+              "travel_mode": "TRANSIT"
+            },
+            {
+              "distance": {
+                "text": "151 ft",
+                "value": 46
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 39
+              },
+              "end_location": {
+                "lat": 42.3739861,
+                "lng": -71.11892229999999
+              },
+              "html_instructions": "Walk to Harvard Square Theatre, 1420 Massachusetts Ave, Cambridge, MA 02138, USA",
+              "polyline": {
+                "points": "o`saGnlaqLm@a@E@KBQDKBI@EBGDGA"
+              },
+              "start_location": {
+                "lat": 42.373362,
+                "lng": -71.118956
+              },
+              "steps": [
+                {
+                  "distance": {
+                    "text": "151 ft",
+                    "value": 46
+                  },
+                  "duration": {
+                    "text": "1 min",
+                    "value": 39
+                  },
+                  "end_location": {
+                    "lat": 42.3739861,
+                    "lng": -71.11892229999999
+                  },
+                  "html_instructions": "Head <b>north</b> on <b>Massachusetts Ave</b> toward <b>Brattle St</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                  "polyline": {
+                    "points": "o`saGnlaqLm@a@E@KBQDKBI@EBGDGA"
+                  },
+                  "start_location": {
+                    "lat": 42.373362,
+                    "lng": -71.118956
+                  },
+                  "travel_mode": "WALKING"
+                }
+              ],
+              "travel_mode": "WALKING"
+            }
+          ],
+          "traffic_speed_entry": [],
+          "via_waypoint": []
+        }
+      ],
+      "overview_polyline": {
+        "points": "iaxaGzi`qLhGpDHFCHmBpH}BhIcB~FEFHPTn@bCjHVh@TXd@d@lCvAxAr@z@[LDNw@\\iAt@qB`AwBl@cAl@m@b@Yn@QrBEnVkApMTtm@hDlPx@|@CbB_@fBk@n@q@fAeCn@m@ZIl@@fBFlB\\tC^^?HCBCN^m@a@E@]HUDMHGA"
+      },
+      "summary": "",
+      "warnings": [
+        "Walking directions are in beta.    Use caution – This route may be missing sidewalks or pedestrian paths."
+      ],
+      "waypoint_order": []
+    }
+  ],
+  "status": "OK"
+}
