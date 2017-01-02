@@ -28,7 +28,7 @@ export default class DirectionsSearch extends Record(defaults) {
       avoid: List(this.travelRestrictions.map(restriction => restriction.value)),
     });
 
-    if (this.travelMode === TravelMode.DRIVING) {
+    if (this.travelMode !== TravelMode.TRANSIT) {
       parameters = parameters.set('traffic_model', this.trafficModel.value);
       parameters = parameters.merge(this.travelTimeFilter.toParameter());
     }
