@@ -19,4 +19,9 @@ let query = new CommandQuery({
   destination: program.destination,
   travelMode: program.travelMode
 });
-service.execute(query);
+try {
+  return service.execute(query)
+                .then(table => console.log(table));
+} catch (Error) {
+  console.log('Could not fetch directions');
+}
