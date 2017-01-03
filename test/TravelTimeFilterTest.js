@@ -6,6 +6,7 @@ import chaiImmutable from 'chai-immutable';
 import {Map} from 'immutable';
 import moment from 'moment-timezone';
 
+import TravelTimeFilter from '../src/data/TravelTimeFilter';
 import TravelTimeFilterType from '../src/data/TravelTimeFilterType';
 
 let expect = chai.expect;
