@@ -25,7 +25,7 @@ export default class TransitLineDetailsTranslator {
   }
 
   getAgencyNames(lineDetails) {
-    return Line(lineDetails.agencies.map(agency => agency.name));
+    return List(lineDetails.agencies.map(agency => agency.name));
   }
 
   getVehicle(lineDetails) {

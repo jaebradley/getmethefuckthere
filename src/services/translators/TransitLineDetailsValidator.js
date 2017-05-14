@@ -4,7 +4,7 @@ export default class TransitLineDetailsValidator {
       return false;
     }
 
-    if (!("name" in lineDetails) and !("short_name" in lineDetails)) {
+    if (!("name" in lineDetails) && !("short_name" in lineDetails)) {
       return false;
     }
   }
