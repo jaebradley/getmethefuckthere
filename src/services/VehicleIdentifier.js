@@ -2,8 +2,8 @@
 
 import Vehicle from '../data/Vehicle';
 
-export default class VehicldeIdentifier {
-  static identify(value) {
+export default class VehicleIdentifier {
+  identify(value) {
     if (typeof value !== 'string') {
       throw new TypeError('Expected a string');
     }
