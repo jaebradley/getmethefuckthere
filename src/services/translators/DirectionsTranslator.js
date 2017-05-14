@@ -299,7 +299,7 @@ export default class DirectionsTranslator {
       line: new Line({
         name: lineName,
         agencies: agencyNames,
-        vehicle: VehicleIdentifier.identify(line.vehicle.type)
+        vehicle: new VehicleIdentifier().identify(line.vehicle.type)
       }),
       stopCount: details.num_stops
     });

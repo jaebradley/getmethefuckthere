@@ -12,14 +12,14 @@ let expect = chai.expect;
 
 describe('Test Vehicle Identifier', function() {
   it('should identify vehicle', function() {
-    expect(VehicleIdentifier.identify('bUs')).to.eql(Vehicle.BUS);
+    expect(new VehicleIdentifier().identify('bUs')).to.eql(Vehicle.BUS);
   });
 
   it('should throw for invalid travel mode', function() {
-    expect(() => VehicleIdentifier.identify('foo')).to.throw(TypeError);
+    expect(() => new VehicleIdentifier().identify('foo')).to.throw(TypeError);
   });
 
   it('should throw for invalid input type', function() {
-    expect(() => VehicleIdentifier.identify(1)).to.throw(TypeError);
+    expect(() => new VehicleIdentifier().identify(1)).to.throw(TypeError);
   });
 });
