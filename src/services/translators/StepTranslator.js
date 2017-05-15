@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 import TravelModeIdentifier from '../TravelModeIdentifier';
 import TransitStopDetailsTranslator from './TransitStopDetailsTranslator';
 import TransitLineDetailsTranslator from './TransitLineDetailsTranslator';
-import VehicleIdentifier from './VehicleIdentifier';
+import VehicleIdentifier from '../VehicleIdentifier';
 
 export default class StepTranslator {
   constructor() {
@@ -14,7 +14,7 @@ export default class StepTranslator {
   }
 
   translate(step) {
-    const parameters = Map({
+    let parameters = Map({
       distance: step.distance.text,
       duration: step.duration.text,
       instructions: striptags(step.html_instructions),
