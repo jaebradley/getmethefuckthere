@@ -16,10 +16,11 @@ import VehicleIdentifier from '../src/services/VehicleIdentifier';
 
 describe('Step Translator', () => {
   const translator = new StepTranslator();
-  const stubbedStopTranslator = sinon.stub(TransitStopDetailsTranslator.prototype, 'translate').returns('foo');
-  const stubbedLineTranslator = sinon.stub(TransitLineDetailsTranslator.prototype, 'translate').returns('bar');
 
   it('Get Transit Details', () => {
+    const stubbedStopTranslator = sinon.stub(TransitStopDetailsTranslator.prototype, 'translate').returns('foo');
+    const stubbedLineTranslator = sinon.stub(TransitLineDetailsTranslator.prototype, 'translate').returns('bar');
+
     const expectedStopCount = 'jaebaebae';
     const transitDetails = {
       'num_stops': expectedStopCount,
@@ -40,6 +41,10 @@ describe('Step Translator', () => {
       stopCount: expectedStopCount
     });
     expect(translator.getTransitDetails(transitDetails)).to.eql(expected);
+
+
+    stubbedStopTranslator.restore();
+    stubbedLineTranslator.restore();
   });
 
   describe('Translates', () => {
