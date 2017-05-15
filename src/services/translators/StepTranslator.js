@@ -1,6 +1,8 @@
 import striptags from 'striptags';
 import { Map } from 'immutable';
 
+import TransitDetails from '../../data/TransitDetails';
+import Step from '../../data/Step';
 import TravelModeIdentifier from '../TravelModeIdentifier';
 import TransitStopDetailsTranslator from './TransitStopDetailsTranslator';
 import TransitLineDetailsTranslator from './TransitLineDetailsTranslator';
