@@ -12,6 +12,7 @@ import StepTranslator from '../src/services/translators/StepTranslator';
 import TransitStopDetailsTranslator from '../src/services/translators/TransitStopDetailsTranslator';
 import TransitLineDetailsTranslator from '../src/services/translators/TransitLineDetailsTranslator';
 import TravelModeIdentifier from '../src/services/TravelModeIdentifier';
+import VehicleIdentifier from '../src/services/VehicleIdentifier';
 
 describe('Step Translator', () => {
   const translator = new StepTranslator();
@@ -42,12 +43,16 @@ describe('Step Translator', () => {
   });
 
   describe('Translates', () => {
-    const stubbedTravelModeIdentifier = sinon.stub(TravelModeIdentifier.prototype, 'identify').returns('biz');
+
+    const distanceText = 'distanceText';
+    const durationText = 'durationText';
+    const htmlInstructions = 'htmlInstructions';
+    const travelMode = 'travelMode';
 
     it('Without Transit Details', () => {
-      const distanceText = 'distanceText';
-      const durationText = 'durationText';
-      const htmlInstructions = 'htmlInstructions';
+      const stubbedTravelModeIdentifier = sinon.stub(TravelModeIdentifier.prototype, 'identify').returns(travelMode);
+      const stubbedVehicleIdentifier = sinon.stub(VehicleIdentifier.prototype, 'identify').returns('bazam');
+
       const step = {
         distance: {
           text: distanceText
@@ -56,15 +61,50 @@ describe('Step Translator', () => {
           text: durationText
         },
         html_instructions: htmlInstructions,
-        travel_mode: 'travelMode'
+        travel_mode: travelMode
       };
       const expected = new Step({
         distance: distanceText,
         duration: durationText,
         instructions: htmlInstructions,
-        mode: 'biz'
+        mode: travelMode
       });
       expect(translator.translate(step)).to.eql(expected);
-    })
+
+      stubbedTravelModeIdentifier.restore();
+      stubbedVehicleIdentifier.restore();
+    });
+
+    it('With Transit Details', () => {
+      const expectedTransitDetails = 'transitDetails';
+      const stubbedTravelModeIdentifier = sinon.stub(TravelModeIdentifier.prototype, 'identify').returns(travelMode);
+      const stubbedVehicleIdentifier = sinon.stub(VehicleIdentifier.prototype, 'identify').returns('bazam');
+      const stubbedTransitDetails = sinon.stub(translator, 'getTransitDetails').returns(expectedTransitDetails);
+
+      const step = {
+        distance: {
+          text: distanceText
+        },
+        duration: {
+          text: durationText
+        },
+        html_instructions: htmlInstructions,
+        travel_mode: travelMode,
+        transit_details: expectedTransitDetails
+      };
+      const expected = new Step({
+        distance: distanceText,
+        duration: durationText,
+        instructions: htmlInstructions,
+        mode: travelMode,
+        transitDetails: expectedTransitDetails
+      });
+
+      expect(translator.translate(step)).to.eql(expected);
+
+      stubbedTransitDetails.restore();
+      stubbedTravelModeIdentifier.restore();
+      stubbedVehicleIdentifier.restore();
+    });
   });
 });
