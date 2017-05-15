@@ -13,7 +13,7 @@ let defaults = {
 
 export default class CommandQuery extends Record(defaults) {
   identifyTravelMode() {
-    return TravelModeIdentifier.identify(this.travelMode);
+    return new TravelModeIdentifier().identify(this.travelMode);
   }
 
   toDirectionsSearch() {

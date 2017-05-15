@@ -2,17 +2,17 @@ import Stop from "../../data/Stop";
 import Time from "../../data/Time";
 
 export default class TransitStopDetailsTranslator {
-  translate(stopDetails) {
+  translate(stopName, arrivalTime) {
     return new Stop({
-      name: stopDetails.name,
-      arrival: this.getArrivalTime(stopDetails)
+      name: stopName,
+      arrival: this.getArrivalTime(arrivalTime)
     });
   }
 
-  getArrivalTime(stopDetails) {
+  getArrivalTime(arrivalTime) {
     return new Time({
-      value: stopDetails.text,
-      timezone: stopDetails.time_zone
+      value: arrivalTime.text,
+      timezone: arrivalTime.time_zone
     });
   }
 }

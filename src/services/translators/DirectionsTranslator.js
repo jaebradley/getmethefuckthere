@@ -198,7 +198,7 @@ export default class DirectionsTranslator {
       distance: distanceDescription,
       duration: durationDescription,
       instructions: instructions,
-      mode: TravelModeIdentifier.identify(travelMode)
+      mode: new TravelModeIdentifier().identify(travelMode)
     });
 
     if ('transit_details' in step) {
