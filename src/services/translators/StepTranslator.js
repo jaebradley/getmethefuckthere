@@ -1,5 +1,5 @@
-import striptags from 'striptags';
 import { Map } from 'immutable';
+import striptags from 'striptags';
 
 import TransitDetails from '../../data/TransitDetails';
 import Step from '../../data/Step';
