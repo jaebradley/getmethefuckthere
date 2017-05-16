@@ -15,7 +15,7 @@ export default class LegTranslator {
       distance: leg.distance.text,
       duration: leg.duration.text,
       end: leg.end_address,
-      start: leg.start_address
+      start: leg.start_address,
       steps: this.getSteps()
     });
 
@@ -38,6 +38,6 @@ export default class LegTranslator {
   }
 
   getSteps(steps) {
-    return List(steps.map(step => this.stepTranslator(step)));
+    return List(steps.map(step => this.stepTranslator.translate(step)));
   }
 }
