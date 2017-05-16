@@ -32,11 +32,10 @@ describe("Transit Stop Details Translator", () => {
     const expectedArrivalTime = "bar";
     const stubbedGetArrivalTime = sinon.stub(translator, "getArrivalTime").returns(expectedArrivalTime);
     const expectedName = "foo";
-    const stopDetails = { name: expectedName };
     const expected = new Stop({
       name: expectedName,
       arrival: expectedArrivalTime
     });
-    expect(translator.translate(stopDetails)).to.eql(expected);
+    expect(translator.translate(expectedName, {})).to.eql(expected);
   });
 });

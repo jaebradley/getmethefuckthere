@@ -3,7 +3,7 @@
 import TravelMode from '../data/TravelMode';
 
 export default class TravelModeIdentifier {
-  static identify(value) {
+  identify(value) {
     if (typeof value !== 'string') {
       throw new TypeError('Expected a string');
     }

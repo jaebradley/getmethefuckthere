@@ -78,7 +78,7 @@ describe('Test Directions Translator', function() {
     distance: distanceDescription,
     duration: durationDescription,
     instructions: htmlInstructions,
-    mode: TravelModeIdentifier.identify(travelMode)
+    mode: new TravelModeIdentifier().identify(travelMode)
   });
 
   let expectedLeg = new Leg({
