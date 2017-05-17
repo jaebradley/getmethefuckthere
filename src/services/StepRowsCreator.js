@@ -1,3 +1,6 @@
+import { List } from 'immutable';
+
+import TransitDetails from '../data/TransitDetails';
 import TransitDetailsRowsCreator from './TransitDetailsRowsCreator';
 
 export default class StepRowsCreator {

@@ -37,7 +37,7 @@ describe('Step Rows Creator', () => {
         emoji: 'emoji'
       }
     };
-    const expected = List.of('Step #2', 'foo distance', 'foo duration', 'foo instructions', 'foo emoji');
+    const expected = List.of('foo Step #2', 'foo distance', 'foo duration', 'foo instructions', 'foo emoji');
     expect(rowsCreator.getStepRow(step, index)).to.eql(expected);
     stubbedGetCell.restore();
   });
