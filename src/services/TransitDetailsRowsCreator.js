@@ -3,22 +3,22 @@ import { List } from 'immutable';
 
 export default class TransitDetailsRowsCreator {
   getRows(transitDetails) {
-    return List.of(this.getRidingRow(transitDetails), this.getDepartingRow(transitDetails));
+    return List.of(this.getLineDetailsRow(transitDetails), this.getStepDetailsRow(transitDetails));
   }
 
-  getRidingRow(transitDetails) {
-    return this.getRow(this.getRidingContent(transitDetails));
+  getLineDetailsRow(transitDetails) {
+    return this.getRow(this.getLineDetailsContent(transitDetails));
   }
 
-  getDepartingRow(transitDetails) {
-    return this.getRow(this.getDepartingContent(transitDetails));
+  getStepDetailsRow(transitDetails) {
+    return this.getRow(this.getStepDetailsContent(transitDetails));
   }
 
-  getRidingContent(transitDetails) {
+  getLineDetailsContent(transitDetails) {
     return `Riding ${transitDetails.stopCount} stops on the ${transitDetails.line.name} ${transitDetails.line.vehicle.emoji}`;
   }
 
-  getDepartingContent(transitDetails) {
+  getStepDetailsContent(transitDetails) {
     return `Departing ${transitDetails.departure.name} at ${transitDetails.departure.arrival.value} and arriving at ${transitDetails.arrival.name} at ${transitDetails.arrival.arrival.value}`
   }
 
