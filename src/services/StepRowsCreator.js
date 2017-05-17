@@ -6,11 +6,11 @@ export default class StepRowsCreator {
   }
 
   getRows(step, index) {
-    const stepRow = this.getStepRow(step, index);
+    const rows = List.of(this.getStepRow(step, index));
     if (step.transitDetails instanceof TransitDetails) {
-      return stepRow.concat(this.transitDetailsRowsCreator.getRows(step.transitDetails));
+      return rows.concat(this.transitDetailsRowsCreator.getRows(step.transitDetails));
     }
-    return stepRow;
+    return rows;
   }
 
   getStepRow(step, index) {
