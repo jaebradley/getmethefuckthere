@@ -1,35 +1,31 @@
+import { List } from 'immutable';
+
 export default class RouteMetadataRowsCreator {
   getRows(route) {
-    const rows = new List();
+    let rows = new List();
     if (route.summary !== '') {
-      rows.push(this.getRow('Summary', route.summary).toJS());
+      rows = rows.push(this.getRow('Summary', route.summary));
     }
 
     if (!route.warnings.isEmpty()) {
-      rows.push(this.getRow('Warnings', route.warnings.toJS().toString()));
+      rows = rows.push(this.getRow('Warnings', route.warnings.toJS().toString()));
     }
 
     return rows;
   }
 
-  getRow(startCellContent, endCellContent) {
-    return List.of(this.getStartCell(startCellContent),
-                   this.getEndCell(endCellContent));
-  }
-
-  getStartCell(content) {
-    return {
-      content: content,
-      colSpan: 1,
-      hAlign: 'center'
-    };
-  }
-
-  getEndCell(content) {
-    return {
-      content: content,
-      colSpan: 1,
-      hAlign: 'center'
-    };
+  getRow(metadataField, metadataContent) {
+    return List.of(
+      {
+        content: metadataField,
+        colSpan: 1,
+        hAlign: 'center'
+      },
+      {
+        content: metadataContent,
+        colSpan: 4,
+        hAlign: 'center'
+      }
+    );
   }
 }
