@@ -1,8 +1,13 @@
+import { List } from 'immutable';
+
+import Time from '../data/Time';
+
+
 export default class LegRowsCreator {
   getRows(leg) {
-    let rows = List.of(this.getLegDetailsContent(leg));
+    let rows = List.of(this.getRow(this.getLegDetailsContent(leg)));
     if ((leg.departureTime instanceof Time) && (leg.arrivalTime instanceof Time)) {
-      return rows.push(this.getTimeDetailsContent(leg));
+      return rows.push(this.getRow(this.getTimeDetailsContent(leg.departureTime, leg.arrivalTime)));
     }
 
     return rows;
@@ -12,8 +17,8 @@ export default class LegRowsCreator {
     return `From ${leg.start} to ${leg.end} taking ${leg.duration} over ${leg.distance}`;
   }
 
-  getTimeDetailsContent(leg) {
-    return `Departing at ${leg.departureTime.value} and arriving at ${leg.arrivalTime.value}`;
+  getTimeDetailsContent(departureTime, arrivalTime) {
+    return `Departing at ${departureTime.value} and arriving at ${arrivalTime.value}`;
   }
 
   getRow(content) {
