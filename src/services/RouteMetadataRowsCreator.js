@@ -1,7 +1,7 @@
 import { List } from 'immutable';
 
 export default class RouteMetadataRowsCreator {
-  getRows(route) {
+  create(route) {
     let rows = new List();
     if (route.summary !== '') {
       rows = rows.push(this.getRow('Summary', route.summary));

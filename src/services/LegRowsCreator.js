@@ -4,7 +4,7 @@ import Time from '../data/Time';
 
 
 export default class LegRowsCreator {
-  getRows(leg) {
+  create(leg) {
     let rows = List.of(this.getRow(this.getLegDetailsContent(leg)));
     if ((leg.departureTime instanceof Time) && (leg.arrivalTime instanceof Time)) {
       return rows.push(this.getRow(this.getTimeDetailsContent(leg.departureTime, leg.arrivalTime)));

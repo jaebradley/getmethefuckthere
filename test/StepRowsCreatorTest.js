@@ -49,7 +49,7 @@ describe('Step Rows Creator', () => {
       const stubbedGetRows = sinon.stub(TransitDetailsRowsCreator.prototype, 'getRows').returns(List.of(1, 2, 3));
       const step = { transitDetails: new TransitDetails() };
       const expected = List.of('jae', 1, 2, 3);
-      expect(rowsCreator.getRows(step, 1)).to.eql(expected);
+      expect(rowsCreator.create(step, 1)).to.eql(expected);
       stubbedGetStepRow.restore();
       stubbedGetRows.restore();
     });
@@ -57,7 +57,7 @@ describe('Step Rows Creator', () => {
     it('Without Transit Details', () => {
       const stubbedGetStepRow = sinon.stub(rowsCreator, 'getStepRow').returns('jae');
       const expected = List.of('jae');
-      expect(rowsCreator.getRows({}, 1)).to.eql(expected);
+      expect(rowsCreator.create({}, 1)).to.eql(expected);
       stubbedGetStepRow.restore();
     });
   });

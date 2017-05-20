@@ -47,7 +47,7 @@ describe('Leg Rows Creator', () => {
     expect(rowsCreator.getLegDetailsContent(leg)).to.eql(expected);
   });
 
-  describe('#getRows', () => {
+  describe('#create', () => {
     it('With time details', () => {
       const stubbedGetRow = sinon.stub(rowsCreator, 'getRow').callsFake(value => `foo ${value}`);
       const stubbedGetTimeDetailsContent = sinon.stub(rowsCreator, 'getTimeDetailsContent').returns('time details content');
@@ -57,7 +57,7 @@ describe('Leg Rows Creator', () => {
         arrivalTime: new Time()
       };
       const expected = List.of('foo leg details content', 'foo time details content');
-      expect(rowsCreator.getRows(leg)).to.eql(expected);
+      expect(rowsCreator.create(leg)).to.eql(expected);
       stubbedGetRow.restore();
       stubbedGetTimeDetailsContent.restore();
       stubbedGetLegDetailsContent.restore();
@@ -67,7 +67,7 @@ describe('Leg Rows Creator', () => {
       const stubbedGetRow = sinon.stub(rowsCreator, 'getRow').callsFake(value => `foo ${value}`);
       const stubbedGetLegDetailsContent = sinon.stub(rowsCreator, 'getLegDetailsContent').returns('leg details content');
       const expected = List.of('foo leg details content');
-      expect(rowsCreator.getRows({})).to.eql(expected);
+      expect(rowsCreator.create({})).to.eql(expected);
       stubbedGetRow.restore();
       stubbedGetLegDetailsContent.restore();
     });

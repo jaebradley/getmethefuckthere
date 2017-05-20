@@ -8,7 +8,7 @@ export default class StepRowsCreator {
     this.transitDetailsRowsCreator = new TransitDetailsRowsCreator();
   }
 
-  getRows(step, index) {
+  create(step, index, steps) {
     const rows = List.of(this.getStepRow(step, index));
     if (step.transitDetails instanceof TransitDetails) {
       return rows.concat(this.transitDetailsRowsCreator.getRows(step.transitDetails));

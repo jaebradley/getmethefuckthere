@@ -35,13 +35,13 @@ describe('Route Metadata Rows Creator', () => {
     });
   });
 
-  describe('#getRows', () => {
+  describe('#create', () => {
     it('without route summary and warnings', () => {
       const route = {
         summary: '',
         warnings: new List()
       };
-      expect(rowsCreator.getRows(route)).to.eql(new List());
+      expect(rowsCreator.create(route)).to.eql(new List());
     });
 
     it('with route summary and without warnings', () => {
@@ -51,7 +51,7 @@ describe('Route Metadata Rows Creator', () => {
         warnings: new List()
       };
       const expected = List.of('Summary foo');
-      expect(rowsCreator.getRows(route)).to.eql(expected);
+      expect(rowsCreator.create(route)).to.eql(expected);
       stubbedGetRow.restore();
     });
 
@@ -62,7 +62,7 @@ describe('Route Metadata Rows Creator', () => {
         warnings: List.of('bar', 'baz')
       };
       const expected = List.of('Warnings bar,baz');
-      expect(rowsCreator.getRows(route)).to.eql(expected);
+      expect(rowsCreator.create(route)).to.eql(expected);
       stubbedGetRow.restore();
     });
   });
