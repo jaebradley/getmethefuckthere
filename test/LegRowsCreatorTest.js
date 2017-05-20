@@ -1,11 +1,12 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-import { List } from 'immutable';
+
+const expect = chai.expect;
 
 chai.use(chaiImmutable);
 
-const expect = chai.expect;
+import { List, Map } from 'immutable';
 
 import Time from '../src/data/Time';
 import LegRowsCreator from '../src/services/LegRowsCreator';
@@ -15,11 +16,13 @@ describe('Leg Rows Creator', () => {
 
   it('#getRow', () => {
     const expectedContent = 'foo';
-    const expected = {
-      content: expectedContent,
-      colSpan: 5,
-      hAlign: 'center'
-    };
+    const expected = List.of(
+      Map({
+        content: expectedContent,
+        colSpan: 5,
+        hAlign: 'center'
+      })
+    );
     expect(rowsCreator.getRow(expectedContent)).to.eql(expected);
   });
 

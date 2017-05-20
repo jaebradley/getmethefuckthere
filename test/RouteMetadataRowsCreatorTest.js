@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 chai.use(chaiImmutable);
 
@@ -17,16 +17,16 @@ describe('Route Metadata Rows Creator', () => {
       const metadataField = 'metadataField';
       const metadataContent = 'metadataContent';
       const expected = List.of(
-        {
+        Map({
           content: metadataField,
           colSpan: 1,
           hAlign: 'center'
-        },
-        {
+        }),
+        Map({
           content: metadataContent,
           colSpan: 4,
           hAlign: 'center'
-        }
+        })
       );
       const result = rowsCreator.getRow(metadataField, metadataContent);
       for (let i = 0; i < result.size; i++) {

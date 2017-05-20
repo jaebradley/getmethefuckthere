@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 chai.use(chaiImmutable);
 
@@ -16,11 +16,11 @@ describe('Step Rows Creator', () => {
 
   it('Gets cell', () => {
     const expectedContent = 'foo';
-    const expected = {
+    const expected = Map({
       content: expectedContent,
       colSpan: 1,
       hAlign: 'center'
-    };
+    });
     expect(rowsCreator.getCell(expectedContent)).to.eql(expected);
   });
 

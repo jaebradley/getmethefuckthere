@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import TransitDetails from '../data/TransitDetails';
 import TransitDetailsRowsCreator from './TransitDetailsRowsCreator';
@@ -17,18 +17,20 @@ export default class StepRowsCreator {
   }
 
   getStepRow(step, index) {
-    return List.of(this.getCell(`Step #${index + 1}`),
-                   this.getCell(step.distance),
-                   this.getCell(step.duration),
-                   this.getCell(step.instructions),
-                   this.getCell(step.mode.emoji));
+    return List.of(
+      this.getCell(`Step #${index + 1}`),
+      this.getCell(step.distance),
+      this.getCell(step.duration),
+      this.getCell(step.instructions),
+      this.getCell(step.mode.emoji)
+    );
   }
 
   getCell(content) {
-    return {
+    return Map({
       content: content,
       colSpan: 1,
       hAlign: 'center'
-    };
+    });
   }
 }

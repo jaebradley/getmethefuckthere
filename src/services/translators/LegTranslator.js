@@ -16,7 +16,7 @@ export default class LegTranslator {
       duration: leg.duration.text,
       end: leg.end_address,
       start: leg.start_address,
-      steps: this.getSteps()
+      steps: this.getSteps(leg.steps)
     });
 
     if ('arrival_time' in leg) {
