@@ -2,12 +2,14 @@
 
 import DirectionsSearch from '../data/DirectionsSearch';
 import DirectionsService from './DirectionsService';
-import DirectionsTranslator from './translators/DirectionsTranslator';
+import RoutesTranslator from './translators/RoutesTranslator';
 import TableCreator from './TableCreator';
 
 export default class CommandExecutionService {
   constructor() {
     this.directionsService = new DirectionsService();
+    this.routesTranslator = new RoutesTranslator();
+    this.routeTableCreator = new RouteTableCreator();
   }
 
   execute(query) {
@@ -17,7 +19,8 @@ export default class CommandExecutionService {
   getDirections(search) {
     return this.directionsService
                .fetch(search)
-               .then(data => DirectionsTranslator.translate(data))
-               .then(translation => TableCreator.create(translation));
+               .then(data => this.routesTranslator.translate(data))
+               .then(routes.map(route => this.routeTableCreator(route))
+               .then(tables.forEach(table => console.log(table.toString()))));
   }
 }

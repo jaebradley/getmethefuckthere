@@ -27,8 +27,7 @@ let query = new CommandQuery({
   travelMode: travelModeValue
 });
 try {
-  service.execute(query)
-         .then(tables => tables.forEach(table => console.log(table)));
+  service.execute(query);
 } catch (Error) {
   console.log('Could not fetch directions');
 }
