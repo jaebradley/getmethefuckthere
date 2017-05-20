@@ -11,17 +11,20 @@ import Leg from '../src/data/Leg';
 import Route from '../src/data/Route';
 import Step from '../src/data/Step';
 import Stop from '../src/data/Stop';
-import TableCreator from '../src/services/TableCreator';
+import RouteTableCreator from '../src/services/RouteTableCreator';
 import TransitDetails from '../src/data/TransitDetails';
 import TravelMode from '../src/data/TravelMode';
 import Time from '../src/data/Time';
 import Vehicle from '../src/data/Vehicle';
 
-chai.use(chaiImmutable);
-
 let expect = chai.expect;
 
-describe('Test Table Creator', function() {
+chai.use(chaiImmutable);
+
+
+describe('Route Table Creator Integration Test', function() {
+  const tableCreator = new RouteTableCreator();
+
   let distance = 'foo';
   let duration = 'bar';
   let instructions = 'baz';
@@ -74,24 +77,8 @@ describe('Test Table Creator', function() {
     legs: List.of(leg, leg)
   });
 
-  it('Tests Step Row Creation', function() {
-    let table = new Table();
-    let expected = '\u001b[90m┌─────────\u001b[39m\u001b[90m┬─────\u001b[39m\u001b[90m┬─────\u001b[39m\u001b[90m┬─────\u001b[39m\u001b[90m┬───┐\u001b[39m\n\u001b[90m│\u001b[39m Step #1 \u001b[90m│\u001b[39m foo \u001b[90m│\u001b[39m bar \u001b[90m│\u001b[39m baz \u001b[90m│\u001b[39m 🚗 \u001b[90m│\u001b[39m\n\u001b[90m└─────────\u001b[39m\u001b[90m┴─────\u001b[39m\u001b[90m┴─────\u001b[39m\u001b[90m┴─────\u001b[39m\u001b[90m┴───┘\u001b[39m';
-    TableCreator.createStepRow(table, step, 0);
-    console.log(table.toString());
-    expect(table.toString()).to.eql(expected);
-  });
-
-  it('Tests Step With Transit Details Creation', function() {
-    let table = new Table();
-    let expected = '\u001b[90m┌───────────────\u001b[39m\u001b[90m┬────────────\u001b[39m\u001b[90m┬───────────\u001b[39m\u001b[90m┬────────────\u001b[39m\u001b[90m┬─────────┐\u001b[39m\n\u001b[90m│\u001b[39m    Step #1    \u001b[90m│\u001b[39m    foo     \u001b[90m│\u001b[39m    bar    \u001b[90m│\u001b[39m    baz     \u001b[90m│\u001b[39m    🚗    \u001b[90m│\u001b[39m\n\u001b[90m├───────────────┴────────────┴───────────┴────────────┴─────────┤\u001b[39m\n\u001b[90m│\u001b[39m            Riding 12 stops on the bibbitybabbity 🚌            \u001b[90m│\u001b[39m\n\u001b[90m├───────────────────────────────────────────────────────────────┤\u001b[39m\n\u001b[90m│\u001b[39m Departing jaebaebae at 1234 and arriving at jaebaebae at 1234 \u001b[90m│\u001b[39m\n\u001b[90m└───────────────────────────────────────────────────────────────┘\u001b[39m';
-    TableCreator.createStepRow(table, stepWithTransitDetails, 0);
-    console.log(table.toString());
-    expect(table.toString()).to.eql(expected);
-  })
-
   it('Tests Route Table Creation', function() {
-    let table = TableCreator.createRouteTable(route);
+    let table = tableCreator.create(route).toString();
     let expected = '\u001b[90m┌────────────────────────────────────────┐\u001b[39m\n\u001b[90m│\u001b[39m From jae to baebae taking bar over foo \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬────┤\u001b[39m\n\u001b[90m│\u001b[39m  Step #1  \u001b[90m│\u001b[39m  foo  \u001b[90m│\u001b[39m  bar  \u001b[90m│\u001b[39m  baz  \u001b[90m│\u001b[39m 🚗  \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼────┤\u001b[39m\n\u001b[90m│\u001b[39m  Step #2  \u001b[90m│\u001b[39m  foo  \u001b[90m│\u001b[39m  bar  \u001b[90m│\u001b[39m  baz  \u001b[90m│\u001b[39m 🚗  \u001b[90m│\u001b[39m\n\u001b[90m├───────────┴───────┴───────┴───────┴────┤\u001b[39m\n\u001b[90m│\u001b[39m From jae to baebae taking bar over foo \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬───────\u001b[39m\u001b[90m┬────┤\u001b[39m\n\u001b[90m│\u001b[39m  Step #1  \u001b[90m│\u001b[39m  foo  \u001b[90m│\u001b[39m  bar  \u001b[90m│\u001b[39m  baz  \u001b[90m│\u001b[39m 🚗  \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼───────\u001b[39m\u001b[90m┼────┤\u001b[39m\n\u001b[90m│\u001b[39m  Step #2  \u001b[90m│\u001b[39m  foo  \u001b[90m│\u001b[39m  bar  \u001b[90m│\u001b[39m  baz  \u001b[90m│\u001b[39m 🚗  \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┼───────┴───────┴───────┴────┤\u001b[39m\n\u001b[90m│\u001b[39m  Summary  \u001b[90m│\u001b[39m          summary           \u001b[90m│\u001b[39m\n\u001b[90m├───────────\u001b[39m\u001b[90m┼────────────────────────────┤\u001b[39m\n\u001b[90m│\u001b[39m Warnings  \u001b[90m│\u001b[39m  warning,another warning   \u001b[90m│\u001b[39m\n\u001b[90m└───────────\u001b[39m\u001b[90m┴────────────────────────────┘\u001b[39m';
     console.log(table);
     expect(table).to.eql(expected);
