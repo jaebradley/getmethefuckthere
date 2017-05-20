@@ -22,10 +22,10 @@ export default class LegRowsCreator {
   }
 
   getRow(content) {
-    return {
+    return [{
       content: content,
       colSpan: 5,
       hAlign: 'center'
-    };
+    }];
   }
 }

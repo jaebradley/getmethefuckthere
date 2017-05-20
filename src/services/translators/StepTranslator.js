@@ -24,7 +24,7 @@ export default class StepTranslator {
     });
 
     if ('transit_details' in step) {
-      parameters = parameters.set('transitDetails', this.getTransitDetails(step.transitDetails));
+      parameters = parameters.set('transitDetails', this.getTransitDetails(step.transit_details));
     }
 
     return new Step(parameters);

@@ -26,18 +26,18 @@ export default class RouteTableCreator {
 
   addMetadataRows(table, route) {
     this.metadataRowsCreator.create(route)
-                            .forEach(row => table.push(row.toJS()));
+                            .forEach(row => table.push(row));
   }
 
   addLegRows(table, leg) {
     this.legRowsCreator.create(leg)
-                       .forEach(row => table.push(row.toJS()));
+                       .forEach(row => table.push(row));
   }
 
   addStepsRows(table, steps) {
     steps.forEach((step, index) => {
       this.stepRowsCreator.create(step, index)
-                          .forEach(row => table.push(row.toJS()));
+                          .forEach(row => table.push(row));
     });
   }
 }

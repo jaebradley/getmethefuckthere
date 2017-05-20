@@ -3,7 +3,8 @@ import { List } from 'immutable';
 
 export default class TransitDetailsRowsCreator {
   getRows(transitDetails) {
-    return List.of(this.getLineDetailsRow(transitDetails), this.getStepDetailsRow(transitDetails));
+    return List.of(this.getLineDetailsRow(transitDetails),
+                   this.getStepDetailsRow(transitDetails));
   }
 
   getLineDetailsRow(transitDetails) {
@@ -23,10 +24,10 @@ export default class TransitDetailsRowsCreator {
   }
 
   getRow(content) {
-    return {
+    return [{
       content: content,
       colSpan: 5,
       hAlign: 'center'
-    };
+    }];
   }
 }

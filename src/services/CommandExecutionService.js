@@ -3,7 +3,7 @@
 import DirectionsSearch from '../data/DirectionsSearch';
 import DirectionsService from './DirectionsService';
 import RoutesTranslator from './translators/RoutesTranslator';
-import TableCreator from './TableCreator';
+import RouteTableCreator from './RouteTableCreator';
 
 export default class CommandExecutionService {
   constructor() {
@@ -19,8 +19,8 @@ export default class CommandExecutionService {
   getDirections(search) {
     return this.directionsService
                .fetch(search)
-               .then(data => this.routesTranslator.translate(data))
-               .then(routes.map(route => this.routeTableCreator(route))
-               .then(tables.forEach(table => console.log(table.toString()))));
+               .then(data => this.routesTranslator.translate(data['routes']))
+               .then(routes => routes.map(route => this.routeTableCreator.create(route)))
+               .then(tables => tables.forEach(table => console.log(table.toString())));
   }
 }
