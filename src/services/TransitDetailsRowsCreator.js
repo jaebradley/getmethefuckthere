@@ -24,10 +24,10 @@ export default class TransitDetailsRowsCreator {
   }
 
   getRow(content) {
-    return [{
+    return List.of({
       content: content,
       colSpan: 5,
       hAlign: 'center'
-    }];
+    });
   }
 }

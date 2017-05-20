@@ -17,13 +17,13 @@ export default class StepRowsCreator {
   }
 
   getStepRow(step, index) {
-    return [
+    return List.of(
       this.getCell(`Step #${index + 1}`),
       this.getCell(step.distance),
       this.getCell(step.duration),
       this.getCell(step.instructions),
       this.getCell(step.mode.emoji)
-    ];
+    );
   }
 
   getCell(content) {

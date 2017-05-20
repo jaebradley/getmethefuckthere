@@ -15,7 +15,7 @@ export default class RouteMetadataRowsCreator {
   }
 
   getRow(metadataField, metadataContent) {
-    return [
+    return List.of(
       {
         content: metadataField,
         colSpan: 1,
@@ -26,6 +26,6 @@ export default class RouteMetadataRowsCreator {
         colSpan: 4,
         hAlign: 'center'
       }
-    ];
+    );
   }
 }
