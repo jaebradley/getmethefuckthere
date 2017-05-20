@@ -81,13 +81,12 @@ describe('Route Table Creator', () => {
                                       .callsFake((table, steps) => { table.push(steps) });
       const stubbedAddMetadataRows = sinon.stub(tableCreator, 'addMetadataRows')
                                           .callsFake((table, route) => { table.push(route.metadata) });
-      const expected = new Table([
-        leg.name,
-        leg.steps,
-        leg.name,
-        leg.steps,
-        route.metadata
-      ]);
+      let expected = new Table();
+      expected.push(leg.name);
+      expected.push('steps');
+      expected.push(leg.name);
+      expected.push('steps');
+      expected.push('metadata');
 
       expect(tableCreator.create(route)).to.eql(expected);
 
