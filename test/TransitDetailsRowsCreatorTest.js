@@ -1,11 +1,11 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-import { List } from 'immutable';
+const expect = chai.expect;
 
 chai.use(chaiImmutable);
 
-const expect = chai.expect;
+import { List, Map } from 'immutable';
 
 import TransitDetailsRowsCreator from '../src/services/TransitDetailsRowsCreator';
 
@@ -14,11 +14,11 @@ describe('Transit Details Rows Creator', () => {
 
   it('Gets row', () => {
     const expectedContent = 'foo';
-    const expected = {
+    const expected = List.of(Map({
       content: expectedContent,
       colSpan: 5,
       hAlign: 'center'
-    };
+    }));
     expect(rowsCreator.getRow(expectedContent)).to.eql(expected);
   });
 

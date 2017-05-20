@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import TransitDetails from '../data/TransitDetails';
 import TransitDetailsRowsCreator from './TransitDetailsRowsCreator';
@@ -27,10 +27,10 @@ export default class StepRowsCreator {
   }
 
   getCell(content) {
-    return {
+    return Map({
       content: content,
       colSpan: 1,
       hAlign: 'center'
-    };
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 
 export default class TransitDetailsRowsCreator {
@@ -24,10 +24,12 @@ export default class TransitDetailsRowsCreator {
   }
 
   getRow(content) {
-    return List.of({
-      content: content,
-      colSpan: 5,
-      hAlign: 'center'
-    });
+    return List.of(
+      Map({
+        content: content,
+        colSpan: 5,
+        hAlign: 'center'
+      })
+    );
   }
 }

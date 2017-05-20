@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 export default class RouteMetadataRowsCreator {
   create(route) {
@@ -16,16 +16,16 @@ export default class RouteMetadataRowsCreator {
 
   getRow(metadataField, metadataContent) {
     return List.of(
-      {
+      Map({
         content: metadataField,
         colSpan: 1,
         hAlign: 'center'
-      },
-      {
+      }),
+      Map({
         content: metadataContent,
         colSpan: 4,
         hAlign: 'center'
-      }
+      })
     );
   }
 }

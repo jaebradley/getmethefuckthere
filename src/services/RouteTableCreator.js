@@ -31,7 +31,7 @@ export default class RouteTableCreator {
 
   addLegRows(table, leg) {
     this.legRowsCreator.create(leg)
-                       .forEach(row => table.push(row));
+                       .forEach(row => table.push(row.toJS()));
   }
 
   addStepsRows(table, steps) {

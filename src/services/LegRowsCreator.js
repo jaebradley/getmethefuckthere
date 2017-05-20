@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 import Time from '../data/Time';
 
@@ -22,10 +22,12 @@ export default class LegRowsCreator {
   }
 
   getRow(content) {
-    return [{
-      content: content,
-      colSpan: 5,
-      hAlign: 'center'
-    }];
+    return List.of(
+      Map({
+        content: content,
+        colSpan: 5,
+        hAlign: 'center'
+      })
+    );
   }
 }
