@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 import { List } from 'immutable';
+import Table from 'cli-table2';
 
 chai.use(chaiImmutable);
 
@@ -61,6 +62,38 @@ describe('Route Table Creator', () => {
       expect(table).to.eql(expected);
 
       stubbedStepRowsCreator.restore();
+    });
+  });
+
+  describe('#create', () => {
+    it('should build table', () => {
+      const leg = {
+        name: 'leg',
+        steps: 'steps'
+      };
+      const route = {
+        metadata: 'metadata',
+        legs: [ leg, leg ]
+      };
+      const stubbedAddLegRows = sinon.stub(tableCreator, 'addLegRows')
+                                      .callsFake((table, leg) => { table.push(leg.name) });
+      const stubbedAddStepRows = sinon.stub(tableCreator, 'addStepsRows')
+                                      .callsFake((table, steps) => { table.push(steps) });
+      const stubbedAddMetadataRows = sinon.stub(tableCreator, 'addMetadataRows')
+                                          .callsFake((table, route) => { table.push(route.metadata) });
+      const expected = new Table([
+        leg.name,
+        leg.steps,
+        leg.name,
+        leg.steps,
+        route.metadata
+      ]);
+
+      expect(tableCreator.create(route)).to.eql(expected);
+
+      stubbedAddLegRows.restore();
+      stubbedAddStepRows.restore();
+      stubbedAddMetadataRows.restore();
     });
   });
 });
