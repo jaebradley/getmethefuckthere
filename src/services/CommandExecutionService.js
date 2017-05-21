@@ -1,6 +1,3 @@
-'use es6';
-
-import DirectionsSearch from '../data/DirectionsSearch';
 import DirectionsService from './DirectionsService';
 import RoutesTranslator from './translators/RoutesTranslator';
 import RouteTableCreator from './RouteTableCreator';
@@ -19,7 +16,7 @@ export default class CommandExecutionService {
   getDirections(search) {
     return this.directionsService
                .fetch(search)
-               .then(data => this.routesTranslator.translate(data['routes']))
+               .then(data => this.routesTranslator.translate(data.routes))
                .then(routes => routes.map(route => this.routeTableCreator.create(route)))
                .then(tables => tables.forEach(table => console.log(table.toString())));
   }

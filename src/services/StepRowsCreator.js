@@ -8,7 +8,7 @@ export default class StepRowsCreator {
     this.transitDetailsRowsCreator = new TransitDetailsRowsCreator();
   }
 
-  create(step, index, steps) {
+  create(step, index) {
     const rows = List.of(this.getStepRow(step, index));
     if (step.transitDetails instanceof TransitDetails) {
       return rows.concat(this.transitDetailsRowsCreator.getRows(step.transitDetails));
@@ -22,15 +22,15 @@ export default class StepRowsCreator {
       this.getCell(step.distance),
       this.getCell(step.duration),
       this.getCell(step.instructions),
-      this.getCell(step.mode.emoji)
+      this.getCell(step.mode.emoji),
     );
   }
 
   getCell(content) {
     return Map({
-      content: content,
+      content,
       colSpan: 1,
-      hAlign: 'center'
+      hAlign: 'center',
     });
   }
 }

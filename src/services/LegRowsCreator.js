@@ -5,7 +5,7 @@ import Time from '../data/Time';
 
 export default class LegRowsCreator {
   create(leg) {
-    let rows = List.of(this.getRow(this.getLegDetailsContent(leg)));
+    const rows = List.of(this.getRow(this.getLegDetailsContent(leg)));
     if ((leg.departureTime instanceof Time) && (leg.arrivalTime instanceof Time)) {
       return rows.push(this.getRow(this.getTimeDetailsContent(leg.departureTime, leg.arrivalTime)));
     }
@@ -24,10 +24,10 @@ export default class LegRowsCreator {
   getRow(content) {
     return List.of(
       Map({
-        content: content,
+        content,
         colSpan: 5,
-        hAlign: 'center'
-      })
+        hAlign: 'center',
+      }),
     );
   }
 }

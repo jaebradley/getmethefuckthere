@@ -1,15 +1,13 @@
-'use es6';
+import { List, Record } from 'immutable';
 
-import {List, Record} from 'immutable';
-
-let defaults = {
+const defaults = {
   distance: '',
   duration: '',
   start: '',
   end: '',
   arrivalTime: undefined,
   departureTime: undefined,
-  steps: List()
+  steps: List(),
 };
 
 export default class Leg extends Record(defaults) {

@@ -3,15 +3,14 @@ import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 import { List } from 'immutable';
 import Table from 'cli-table2';
-
-chai.use(chaiImmutable);
-
-const expect = chai.expect;
-
 import RouteTableCreator from '../src/services/RouteTableCreator';
 import RouteMetadataRowsCreator from '../src/services/RouteMetadataRowsCreator';
 import StepRowsCreator from '../src/services/StepRowsCreator';
 import LegRowsCreator from '../src/services/LegRowsCreator';
+
+chai.use(chaiImmutable);
+
+const expect = chai.expect;
 
 describe('Route Table Creator', () => {
   const tableCreator = new RouteTableCreator();
@@ -55,7 +54,7 @@ describe('Route Table Creator', () => {
       const stubbedStepRowsCreator = sinon.stub(StepRowsCreator.prototype, 'create').returns(step);
 
       const table = [];
-      const expected = [ ['foo'], ['foo'] ];
+      const expected = [['foo'], ['foo']];
 
       tableCreator.addStepsRows(table, steps);
 
@@ -69,19 +68,19 @@ describe('Route Table Creator', () => {
     it('should build table', () => {
       const leg = {
         name: 'leg',
-        steps: 'steps'
+        steps: 'steps',
       };
       const route = {
         metadata: 'metadata',
-        legs: [ leg, leg ]
+        legs: [leg, leg],
       };
       const stubbedAddLegRows = sinon.stub(tableCreator, 'addLegRows')
-                                      .callsFake((table, leg) => { table.push(leg.name) });
+                                      .callsFake((table, value) => table.push(value.name));
       const stubbedAddStepRows = sinon.stub(tableCreator, 'addStepsRows')
-                                      .callsFake((table, steps) => { table.push(steps) });
+                                      .callsFake((table, steps) => table.push(steps));
       const stubbedAddMetadataRows = sinon.stub(tableCreator, 'addMetadataRows')
-                                          .callsFake((table, route) => { table.push(route.metadata) });
-      let expected = new Table();
+                                          .callsFake((table, value) => table.push(value.metadata));
+      const expected = new Table();
       expected.push(leg.name);
       expected.push('steps');
       expected.push(leg.name);

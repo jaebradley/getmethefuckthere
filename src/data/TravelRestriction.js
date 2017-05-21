@@ -1,20 +1,18 @@
-'use es6';
+import { Enum } from 'enumify';
 
-import {Enum} from 'enumify';
-
-export default class TravelRestriction extends Enum {};
+export default class TravelRestriction extends Enum {}
 
 TravelRestriction.initEnum({
   TOLLS: {
-    value: 'tolls'
+    value: 'tolls',
   },
   HIGHWAYS: {
-    value: 'highways'
+    value: 'highways',
   },
   FERRIES: {
-    value: 'ferries'
+    value: 'ferries',
   },
   INDOOR: {
-    value: 'indoor'
+    value: 'indoor',
   },
 });

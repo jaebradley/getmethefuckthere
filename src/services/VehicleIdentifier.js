@@ -8,12 +8,13 @@ export default class VehicleIdentifier {
       throw new TypeError('Expected a string');
     }
 
-    for (let mode of Vehicle.enumValues) {
-      if (value.toUpperCase() === mode.value) {
-        return mode;
-      }
+    const vehicle = Vehicle.enumValues
+                           .find(enumValue => enumValue.value === value.toUpperCase());
+
+    if (typeof vehicle === 'undefined') {
+      throw new TypeError('Unable to identify vehicle');
     }
 
-    throw new TypeError('Unable to identify vehicle');
+    return vehicle;
   }
 }

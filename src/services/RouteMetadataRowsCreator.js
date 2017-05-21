@@ -19,13 +19,13 @@ export default class RouteMetadataRowsCreator {
       Map({
         content: metadataField,
         colSpan: 1,
-        hAlign: 'center'
+        hAlign: 'center',
       }),
       Map({
         content: metadataContent,
         colSpan: 4,
-        hAlign: 'center'
-      })
+        hAlign: 'center',
+      }),
     );
   }
 }
