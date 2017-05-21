@@ -1,11 +1,6 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-
-chai.use(chaiImmutable);
-
-const expect = chai.expect;
-
 import TransitDetails from '../src/data/TransitDetails';
 import Step from '../src/data/Step';
 import StepTranslator from '../src/services/translators/StepTranslator';
@@ -14,6 +9,9 @@ import TransitLineDetailsTranslator from '../src/services/translators/TransitLin
 import TravelModeIdentifier from '../src/services/TravelModeIdentifier';
 import VehicleIdentifier from '../src/services/VehicleIdentifier';
 
+chai.use(chaiImmutable);
+
+const expect = chai.expect;
 describe('Step Translator', () => {
   const translator = new StepTranslator();
 
@@ -23,22 +21,22 @@ describe('Step Translator', () => {
 
     const expectedStopCount = 'jaebaebae';
     const transitDetails = {
-      'num_stops': expectedStopCount,
-      'arrival_stop': {
-        'name': 'baz'
+      num_stops: expectedStopCount,
+      arrival_stop: {
+        name: 'baz',
       },
-      'arrival_time': 'now',
-      'departure_stop': {
-        'name': 'biz'
+      arrival_time: 'now',
+      departure_stop: {
+        name: 'biz',
       },
-      'departure_time': 'or never',
-      'line': 'coke'
+      departure_time: 'or never',
+      line: 'coke',
     };
     const expected = new TransitDetails({
       arrival: 'foo',
       departure: 'foo',
       line: 'bar',
-      stopCount: expectedStopCount
+      stopCount: expectedStopCount,
     });
     expect(translator.getTransitDetails(transitDetails)).to.eql(expected);
 
@@ -48,7 +46,6 @@ describe('Step Translator', () => {
   });
 
   describe('Translates', () => {
-
     const distanceText = 'distanceText';
     const durationText = 'durationText';
     const htmlInstructions = 'htmlInstructions';
@@ -60,19 +57,19 @@ describe('Step Translator', () => {
 
       const step = {
         distance: {
-          text: distanceText
+          text: distanceText,
         },
         duration: {
-          text: durationText
+          text: durationText,
         },
         html_instructions: htmlInstructions,
-        travel_mode: travelMode
+        travel_mode: travelMode,
       };
       const expected = new Step({
         distance: distanceText,
         duration: durationText,
         instructions: htmlInstructions,
-        mode: travelMode
+        mode: travelMode,
       });
       expect(translator.translate(step)).to.eql(expected);
 
@@ -88,21 +85,21 @@ describe('Step Translator', () => {
 
       const step = {
         distance: {
-          text: distanceText
+          text: distanceText,
         },
         duration: {
-          text: durationText
+          text: durationText,
         },
         html_instructions: htmlInstructions,
         travel_mode: travelMode,
-        transit_details: expectedTransitDetails
+        transit_details: expectedTransitDetails,
       };
       const expected = new Step({
         distance: distanceText,
         duration: durationText,
         instructions: htmlInstructions,
         mode: travelMode,
-        transitDetails: expectedTransitDetails
+        transitDetails: expectedTransitDetails,
       });
 
       expect(translator.translate(step)).to.eql(expected);

@@ -1,17 +1,15 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-
-chai.use(chaiImmutable);
-
-const expect = chai.expect;
-
 import { List } from 'immutable';
 
 import Route from '../src/data/Route';
 import LegTranslator from '../src/services/translators/LegTranslator';
 import RoutesTranslator from '../src/services/translators/RoutesTranslator';
 
+chai.use(chaiImmutable);
+
+const expect = chai.expect;
 describe('Routes Translator', () => {
   const translator = new RoutesTranslator();
 
@@ -31,13 +29,13 @@ describe('Routes Translator', () => {
     const stubbedGetLegs = sinon.stub(translator, 'getLegs').returns(legs);
     const route = {
       summary: routeSummary,
-      warnings: warnings,
-      legs: legs
+      warnings,
+      legs,
     };
     const expected = new Route({
       summary: routeSummary,
       warnings: List(warnings),
-      legs: legs
+      legs,
     });
     expect(translator.getRoute(route)).to.eql(expected);
     stubbedGetLegs.restore();

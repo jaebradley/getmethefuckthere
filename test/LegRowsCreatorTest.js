@@ -1,15 +1,13 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
-
-const expect = chai.expect;
+import { List, Map } from 'immutable';
+import Time from '../src/data/Time';
+import LegRowsCreator from '../src/services/LegRowsCreator';
 
 chai.use(chaiImmutable);
 
-import { List, Map } from 'immutable';
-
-import Time from '../src/data/Time';
-import LegRowsCreator from '../src/services/LegRowsCreator';
+const expect = chai.expect;
 
 describe('Leg Rows Creator', () => {
   const rowsCreator = new LegRowsCreator();
@@ -20,8 +18,8 @@ describe('Leg Rows Creator', () => {
       Map({
         content: expectedContent,
         colSpan: 5,
-        hAlign: 'center'
-      })
+        hAlign: 'center',
+      }),
     );
     expect(rowsCreator.getRow(expectedContent)).to.eql(expected);
   });
@@ -41,10 +39,10 @@ describe('Leg Rows Creator', () => {
     const duration = 'jae';
     const distance = 'baebae';
     const leg = {
-      start: start,
-      end: end,
-      duration: duration,
-      distance: distance
+      start,
+      end,
+      duration,
+      distance,
     };
     const expected = 'From foo to bar taking jae over baebae';
     expect(rowsCreator.getLegDetailsContent(leg)).to.eql(expected);
@@ -57,7 +55,7 @@ describe('Leg Rows Creator', () => {
       const stubbedGetLegDetailsContent = sinon.stub(rowsCreator, 'getLegDetailsContent').returns('leg details content');
       const leg = {
         departureTime: new Time(),
-        arrivalTime: new Time()
+        arrivalTime: new Time(),
       };
       const expected = List.of('foo leg details content', 'foo time details content');
       expect(rowsCreator.create(leg)).to.eql(expected);

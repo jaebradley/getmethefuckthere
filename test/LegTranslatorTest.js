@@ -2,16 +2,16 @@ import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 
-chai.use(chaiImmutable);
-
-const expect = chai.expect;
-
 import { List } from 'immutable';
 
 import Time from '../src/data/Time';
 import Leg from '../src/data/Leg';
 import StepTranslator from '../src/services/translators/StepTranslator';
 import LegTranslator from '../src/services/translators/LegTranslator';
+
+chai.use(chaiImmutable);
+
+const expect = chai.expect;
 
 describe('Leg Translator', () => {
   const translator = new LegTranslator();
@@ -30,17 +30,16 @@ describe('Leg Translator', () => {
     const expectedArrivalTimeTimeZone = 'baebae';
     const arrivalTime = {
       text: expectedArrivalTimeText,
-      time_zone: expectedArrivalTimeTimeZone
+      time_zone: expectedArrivalTimeTimeZone,
     };
     const expected = new Time({
       value: expectedArrivalTimeText,
-      timezone: expectedArrivalTimeTimeZone
+      timezone: expectedArrivalTimeTimeZone,
     });
     expect(translator.getArrivalTime(arrivalTime)).to.eql(expected);
   });
 
   describe('Translates', () => {
-
     const distanceText = 'distanceText';
     const durationText = 'durationText';
     const endAddress = 'endAddress';
@@ -52,21 +51,21 @@ describe('Leg Translator', () => {
       const stubbedGetSteps = sinon.stub(translator, 'getSteps').returns(steps);
       const leg = {
         distance: {
-          text: distanceText
+          text: distanceText,
         },
         duration: {
-          text: durationText
+          text: durationText,
         },
         end_address: endAddress,
-        start_address:startAddress,
-        steps: steps
+        start_address: startAddress,
+        steps,
       };
       const expected = new Leg({
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
-        steps: steps
+        steps,
       });
       expect(translator.translate(leg)).to.eql(expected);
 
@@ -78,23 +77,23 @@ describe('Leg Translator', () => {
       const stubbedGetArrivalTime = sinon.stub(translator, 'getArrivalTime').returns(arrivalTime);
       const leg = {
         distance: {
-          text: distanceText
+          text: distanceText,
         },
         duration: {
-          text: durationText
+          text: durationText,
         },
         end_address: endAddress,
-        start_address:startAddress,
-        steps: steps,
-        arrival_time: arrivalTime
+        start_address: startAddress,
+        steps,
+        arrival_time: arrivalTime,
       };
       const expected = new Leg({
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
-        steps: steps,
-        arrivalTime: arrivalTime
+        steps,
+        arrivalTime,
       });
       expect(translator.translate(leg)).to.eql(expected);
 
@@ -107,23 +106,23 @@ describe('Leg Translator', () => {
       const stubbedGetArrivalTime = sinon.stub(translator, 'getArrivalTime').returns(arrivalTime);
       const leg = {
         distance: {
-          text: distanceText
+          text: distanceText,
         },
         duration: {
-          text: durationText
+          text: durationText,
         },
         end_address: endAddress,
-        start_address:startAddress,
-        steps: steps,
-        departure_time: arrivalTime
+        start_address: startAddress,
+        steps,
+        departure_time: arrivalTime,
       };
       const expected = new Leg({
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
-        steps: steps,
-        departureTime: arrivalTime
+        steps,
+        departureTime: arrivalTime,
       });
       expect(translator.translate(leg)).to.eql(expected);
 

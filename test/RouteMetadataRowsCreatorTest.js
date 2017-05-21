@@ -2,13 +2,11 @@ import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 import { List, Map } from 'immutable';
+import RouteMetadataRowsCreator from '../src/services/RouteMetadataRowsCreator';
 
 chai.use(chaiImmutable);
 
 const expect = chai.expect;
-
-import RouteMetadataRowsCreator from '../src/services/RouteMetadataRowsCreator';
-
 describe('Route Metadata Rows Creator', () => {
   const rowsCreator = new RouteMetadataRowsCreator();
 
@@ -20,16 +18,16 @@ describe('Route Metadata Rows Creator', () => {
         Map({
           content: metadataField,
           colSpan: 1,
-          hAlign: 'center'
+          hAlign: 'center',
         }),
         Map({
           content: metadataContent,
           colSpan: 4,
-          hAlign: 'center'
-        })
+          hAlign: 'center',
+        }),
       );
       const result = rowsCreator.getRow(metadataField, metadataContent);
-      for (let i = 0; i < result.size; i++) {
+      for (let i = 0; i < result.size; i + 1) {
         expect(result.get(i)).to.eql(expected.get(i));
       }
     });
@@ -39,7 +37,7 @@ describe('Route Metadata Rows Creator', () => {
     it('without route summary and warnings', () => {
       const route = {
         summary: '',
-        warnings: new List()
+        warnings: new List(),
       };
       expect(rowsCreator.create(route)).to.eql(new List());
     });
@@ -48,7 +46,7 @@ describe('Route Metadata Rows Creator', () => {
       const stubbedGetRow = sinon.stub(rowsCreator, 'getRow').callsFake((metadataField, metadataContent) => `${metadataField} ${metadataContent}`);
       const route = {
         summary: 'foo',
-        warnings: new List()
+        warnings: new List(),
       };
       const expected = List.of('Summary foo');
       expect(rowsCreator.create(route)).to.eql(expected);
@@ -59,7 +57,7 @@ describe('Route Metadata Rows Creator', () => {
       const stubbedGetRow = sinon.stub(rowsCreator, 'getRow').callsFake((metadataField, metadataContent) => `${metadataField} ${metadataContent}`);
       const route = {
         summary: '',
-        warnings: List.of('bar', 'baz')
+        warnings: List.of('bar', 'baz'),
       };
       const expected = List.of('Warnings bar,baz');
       expect(rowsCreator.create(route)).to.eql(expected);

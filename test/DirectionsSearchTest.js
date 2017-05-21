@@ -2,9 +2,7 @@
 
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
-
-import {List, Map} from 'immutable';
-
+import { List, Map } from 'immutable';
 import DirectionsSearch from '../src/data/DirectionsSearch';
 import TrafficModel from '../src/data/TrafficModel';
 import TransitMode from '../src/data/TransitMode';
@@ -12,62 +10,63 @@ import TravelMode from '../src/data/TravelMode';
 import TravelRestriction from '../src/data/TravelRestriction';
 import TravelTimeFilter from '../src/data/TravelTimeFilter';
 
-let expect = chai.expect;
+chai.use(chaiImmutable);
 
-describe('Test Directions Search', function() {
-  let origin = 'origin';
-  let destination = 'destination';
-  let mode = TravelMode.DRIVING;
-  let transitMode = TravelMode.TRANSIT;
-  let drivingMode = TravelMode.DRIVING;
-  let trafficModel = TrafficModel.BEST_GUESS;
+const expect = chai.expect;
 
-  let transitMode1 = TransitMode.BUS;
-  let transitMode2 = TransitMode.SUBWAY;
-  let transitModes = List.of(transitMode1, transitMode2);
+describe('Test Directions Search', () => {
+  const origin = 'origin';
+  const destination = 'destination';
+  const transitMode = TravelMode.TRANSIT;
+  const drivingMode = TravelMode.DRIVING;
+  const trafficModel = TrafficModel.BEST_GUESS;
 
-  let travelRestriction1 = TravelRestriction.TOLLS;
-  let travelRestriction2 = TravelRestriction.FERRIES;
-  let travelRestrictions = List.of(travelRestriction1, travelRestriction2);
+  const transitMode1 = TransitMode.BUS;
+  const transitMode2 = TransitMode.SUBWAY;
+  const transitModes = List.of(transitMode1, transitMode2);
 
-  let useAlternatives = false;
+  const travelRestriction1 = TravelRestriction.TOLLS;
+  const travelRestriction2 = TravelRestriction.FERRIES;
+  const travelRestrictions = List.of(travelRestriction1, travelRestriction2);
 
-  it('should test transit parameter creation', function() {
-    let transitDirections = new DirectionsSearch({
-      destination: destination,
-      origin: origin,
+  const useAlternatives = false;
+
+  it('should test transit parameter creation', () => {
+    const transitDirections = new DirectionsSearch({
+      destination,
+      origin,
       travelMode: transitMode,
-      trafficModel: trafficModel,
-      transitModes: transitModes,
-      travelRestrictions: travelRestrictions,
-      useAlternatives: useAlternatives
+      trafficModel,
+      transitModes,
+      travelRestrictions,
+      useAlternatives,
     });
-    let expected = Map({
-      destination: destination,
-      origin: origin,
+    const expected = Map({
+      destination,
+      origin,
       mode: transitMode.value,
       alternatives: useAlternatives,
       avoid: List.of(travelRestriction1.value, travelRestriction2.value),
-      transit_mode: List.of(transitMode1.value, transitMode2.value)
+      transit_mode: List.of(transitMode1.value, transitMode2.value),
     });
     expect(transitDirections.toParameters()).to.eql(expected);
   });
 
-  it('should test non-transit parameter creation', function() {
-    let travelTimeFilter = new TravelTimeFilter();
-    let drivingDirections = new DirectionsSearch({
-      destination: destination,
-      origin: origin,
+  it('should test non-transit parameter creation', () => {
+    const travelTimeFilter = new TravelTimeFilter();
+    const drivingDirections = new DirectionsSearch({
+      destination,
+      origin,
       travelMode: drivingMode,
-      trafficModel: trafficModel,
-      transitModes: transitModes,
-      travelRestrictions: travelRestrictions,
-      useAlternatives: useAlternatives,
-      travelTimeFilter: travelTimeFilter
+      trafficModel,
+      transitModes,
+      travelRestrictions,
+      useAlternatives,
+      travelTimeFilter,
     });
     let expected = Map({
-      destination: destination,
-      origin: origin,
+      destination,
+      origin,
       mode: drivingMode.value,
       alternatives: useAlternatives,
       avoid: List.of(travelRestriction1.value, travelRestriction2.value),
