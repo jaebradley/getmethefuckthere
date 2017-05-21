@@ -1,5 +1,3 @@
-'use es6';
-
 import TravelMode from '../data/TravelMode';
 
 export default class TravelModeIdentifier {
@@ -8,12 +6,14 @@ export default class TravelModeIdentifier {
       throw new TypeError('Expected a string');
     }
 
-    for (let mode of TravelMode.enumValues) {
-      if (value.toLowerCase() === mode.value) {
-        return mode;
-      }
+    const travelMode = TravelMode.enumValues
+                                 .map(mode => mode.value)
+                                 .find(modeValue => value.toLowerCase() === modeValue);
+
+    if (typeof travelMode === 'undefined') {
+      throw new TypeError('Unable to identify travel mode');
     }
 
-    throw new TypeError('Unable to identify travel mode');
+    return travelMode;
   }
 }

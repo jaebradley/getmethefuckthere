@@ -1,5 +1,3 @@
-'use es6';
-
 import { Record } from 'immutable';
 
 import DirectionsSearch from './DirectionsSearch';

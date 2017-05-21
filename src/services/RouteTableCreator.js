@@ -12,9 +12,9 @@ export default class RouteTableCreator {
   }
 
   create(route) {
-    let table = new Table();
+    const table = new Table();
 
-    route.legs.forEach(leg => {
+    route.legs.forEach((leg) => {
       this.addLegRows(table, leg);
       this.addStepsRows(table, leg.steps);
     });

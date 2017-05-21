@@ -20,16 +20,16 @@ export default class TransitDetailsRowsCreator {
   }
 
   getStepDetailsContent(transitDetails) {
-    return `Departing ${transitDetails.departure.name} at ${transitDetails.departure.arrival.value} and arriving at ${transitDetails.arrival.name} at ${transitDetails.arrival.arrival.value}`
+    return `Departing ${transitDetails.departure.name} at ${transitDetails.departure.arrival.value} and arriving at ${transitDetails.arrival.name} at ${transitDetails.arrival.arrival.value}`;
   }
 
   getRow(content) {
     return List.of(
       Map({
-        content: content,
+        content,
         colSpan: 5,
-        hAlign: 'center'
-      })
+        hAlign: 'center',
+      }),
     );
   }
 }
