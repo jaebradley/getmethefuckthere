@@ -1,11 +1,9 @@
-'use es6';
+import { List, Record } from 'immutable';
 
-import {List, Record} from 'immutable';
-
-let defaults = {
+const defaults = {
   legs: List(),
   summary: '',
-  warnings: List()
+  warnings: List(),
 };
 
 export default class Route extends Record(defaults) {

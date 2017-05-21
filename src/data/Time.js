@@ -1,11 +1,9 @@
-'use es6';
+import { Record } from 'immutable';
 
-import {Record} from 'immutable';
-
-let defaults = {
+const defaults = {
   value: '',
-  timezone: ''
+  timezone: '',
 };
 
-export default class Time extends Record(defaults){
+export default class Time extends Record(defaults) {
 }

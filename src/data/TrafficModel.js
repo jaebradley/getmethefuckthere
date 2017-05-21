@@ -1,17 +1,15 @@
-'use es6';
+import { Enum } from 'enumify';
 
-import {Enum} from 'enumify';
-
-export default class TrafficModel extends Enum {};
+export default class TrafficModel extends Enum {}
 
 TrafficModel.initEnum({
   OPTIMISTIC: {
-    value: 'optimistic'
+    value: 'optimistic',
   },
   PESSIMISTIC: {
-    value: 'pessimistic'
+    value: 'pessimistic',
   },
   BEST_GUESS: {
-    value: 'best_guess'
+    value: 'best_guess',
   },
 });

@@ -1,10 +1,8 @@
-'use es6';
-
-import {Record} from 'immutable';
+import { Record } from 'immutable';
 
 import Time from './Time';
 
-let defaults = {
+const defaults = {
   name: '',
   arrival: new Time()
 };

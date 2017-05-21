@@ -1,12 +1,10 @@
-'use es6'
-
-import {List, Map, Record} from 'immutable';
+import { List, Map, Record } from 'immutable';
 
 import TrafficModel from './TrafficModel';
 import TravelMode from './TravelMode';
 import TravelTimeFilter from './TravelTimeFilter';
 
-let defaults = {
+const defaults = {
   destination: '',
   origin: '',
   travelMode: TravelMode.DRIVING,
@@ -15,7 +13,7 @@ let defaults = {
   travelRestrictions: List.of(),
   travelTimeFilter: new TravelTimeFilter(),
   useAlternatives: false,
-}
+};
 
 export default class DirectionsSearch extends Record(defaults) {
   toParameters() {
@@ -27,7 +25,7 @@ export default class DirectionsSearch extends Record(defaults) {
       avoid: List(this.travelRestrictions.map(restriction => restriction.value)),
     });
 
-    if (this.travelMode == TravelMode.TRANSIT) {
+    if (this.travelMode === TravelMode.TRANSIT) {
       parameters = parameters.set('transit_mode', List(this.transitModes.map(mode => mode.value)));
     }
 

@@ -1,13 +1,11 @@
-'use es6';
-
-import {List, Record} from 'immutable';
+import { List, Record } from 'immutable';
 
 import Vehicle from './Vehicle';
 
-let defaults = {
+const defaults = {
   name: '',
   agencies: List(),
-  vehicle: Vehicle.BUS
+  vehicle: Vehicle.BUS,
 };
 
 export default class Line extends Record(defaults) {

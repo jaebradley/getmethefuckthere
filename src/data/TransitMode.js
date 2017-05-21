@@ -1,23 +1,21 @@
-'use es6';
+import { Enum } from 'enumify';
 
-import {Enum} from 'enumify';
-
-export default class TransitMode extends Enum {};
+export default class TransitMode extends Enum {}
 
 TransitMode.initEnum({
   BUS: {
-    value: 'bus'
+    value: 'bus',
   },
   SUBWAY: {
-    value: 'subway'
+    value: 'subway',
   },
   TRAIN: {
-    value: 'train'
+    value: 'train',
   },
   TRAM: {
-    value: 'tram'
+    value: 'tram',
   },
   RAIL: {
-    value: 'rail'
-  }
+    value: 'rail',
+  },
 });

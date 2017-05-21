@@ -1,14 +1,12 @@
-'use es6';
+import { Enum } from 'enumify';
 
-import {Enum} from 'enumify';
-
-export default class Unit extends Enum {};
+export default class Unit extends Enum {}
 
 Unit.initEnum({
   METRIC: {
-    value: 'metric'
+    value: 'metric',
   },
   IMPERIAL: {
-    value: 'imperial'
+    value: 'imperial',
   },
 });
