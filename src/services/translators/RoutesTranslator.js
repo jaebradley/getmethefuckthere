@@ -16,7 +16,7 @@ export default class RoutesTranslator {
     return new Route({
       summary: route.summary,
       warnings: List(route.warnings),
-      legs: this.getLegs(route.legs)
+      legs: this.getLegs(route.legs),
     });
   }
 

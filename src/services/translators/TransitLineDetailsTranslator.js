@@ -1,7 +1,6 @@
-import { List } from "immutable";
+import { List } from 'immutable';
 
-import Line from "../../data/Line";
-import VehicleIdentifier from '../VehicleIdentifier';
+import Line from '../../data/Line';
 
 export default class TransitLineDetailsTranslator {
   constructor(vehicleIdentifier) {
@@ -12,12 +11,12 @@ export default class TransitLineDetailsTranslator {
     return new Line({
       name: this.getLineName(lineDetails),
       agencies: this.getAgencyNames(lineDetails),
-      vehicle: this.getVehicle(lineDetails)
+      vehicle: this.getVehicle(lineDetails),
     });
   }
 
   getLineName(lineDetails) {
-    if ("name" in lineDetails) {
+    if ('name' in lineDetails) {
       return lineDetails.name;
     }
 

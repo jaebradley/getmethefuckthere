@@ -20,7 +20,7 @@ export default class StepTranslator {
       distance: step.distance.text,
       duration: step.duration.text,
       instructions: striptags(step.html_instructions),
-      mode: this.travelModeIdentifier.identify(step.travel_mode)
+      mode: this.travelModeIdentifier.identify(step.travel_mode),
     });
 
     if ('transit_details' in step) {
@@ -32,10 +32,12 @@ export default class StepTranslator {
 
   getTransitDetails(transitDetails) {
     return new TransitDetails({
-      arrival: this.stopTranslator.translate(transitDetails.arrival_stop.name, transitDetails.arrival_time),
-      departure: this.stopTranslator.translate(transitDetails.departure_stop.name, transitDetails.departure_time),
+      arrival: this.stopTranslator.translate(transitDetails.arrival_stop.name,
+                                             transitDetails.arrival_time),
+      departure: this.stopTranslator.translate(transitDetails.departure_stop.name,
+                                               transitDetails.departure_time),
       line: this.lineTranslator.translate(transitDetails.line),
-      stopCount: transitDetails.num_stops
+      stopCount: transitDetails.num_stops,
     });
   }
 }

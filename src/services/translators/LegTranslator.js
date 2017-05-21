@@ -16,7 +16,7 @@ export default class LegTranslator {
       duration: leg.duration.text,
       end: leg.end_address,
       start: leg.start_address,
-      steps: this.getSteps(leg.steps)
+      steps: this.getSteps(leg.steps),
     });
 
     if ('arrival_time' in leg) {
@@ -33,7 +33,7 @@ export default class LegTranslator {
   getArrivalTime(arrivalTime) {
     return new Time({
       value: arrivalTime.text,
-      timezone: arrivalTime.time_zone
+      timezone: arrivalTime.time_zone,
     });
   }
 

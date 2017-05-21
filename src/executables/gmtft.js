@@ -4,7 +4,7 @@
 
 import program from 'commander';
 
-import CommandExecutionService from '../services/CommandExecutionService'
+import CommandExecutionService from '../services/CommandExecutionService';
 import CommandQuery from '../data/CommandQuery';
 import TravelMode from '../data/TravelMode';
 
@@ -14,20 +14,20 @@ program.version('0.0.1')
        .option('-d, --destination <destination>', 'specify destination')
        .parse(process.argv);
 
-let service = new CommandExecutionService();
+const service = new CommandExecutionService();
 
 // default travel mode should be driving
-let travelModeValue = (typeof program.travelMode === 'undefined')
+const travelModeValue = (typeof program.travelMode === 'undefined')
   ? TravelMode.DRIVING.value
   : program.travelMode;
 
-let query = new CommandQuery({
+const query = new CommandQuery({
   origin: program.origin,
   destination: program.destination,
-  travelMode: travelModeValue
+  travelMode: travelModeValue,
 });
 try {
   service.execute(query);
 } catch (Error) {
-  console.log('Could not fetch directions');
+  console.error('Could not fetch directions');
 }
