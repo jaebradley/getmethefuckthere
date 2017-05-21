@@ -9,8 +9,7 @@ export default class VehicleIdentifier {
     }
 
     const vehicle = Vehicle.enumValues
-                           .map(enumValue => enumValue.value)
-                           .find(vehicleValue => value.toLowerCase() === vehicleValue);
+                           .find(enumValue => enumValue.value === value.toUpperCase());
 
     if (typeof vehicle === 'undefined') {
       throw new TypeError('Unable to identify vehicle');

@@ -7,8 +7,7 @@ export default class TravelModeIdentifier {
     }
 
     const travelMode = TravelMode.enumValues
-                                 .map(mode => mode.value)
-                                 .find(modeValue => value.toLowerCase() === modeValue);
+                                 .find(enumValue => enumValue.value === value.toLowerCase());
 
     if (typeof travelMode === 'undefined') {
       throw new TypeError('Unable to identify travel mode');
