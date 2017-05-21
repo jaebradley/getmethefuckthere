@@ -7,6 +7,7 @@ import RouteMetadataRowsCreator from '../src/services/RouteMetadataRowsCreator';
 chai.use(chaiImmutable);
 
 const expect = chai.expect;
+
 describe('Route Metadata Rows Creator', () => {
   const rowsCreator = new RouteMetadataRowsCreator();
 
@@ -27,7 +28,7 @@ describe('Route Metadata Rows Creator', () => {
         }),
       );
       const result = rowsCreator.getRow(metadataField, metadataContent);
-      for (let i = 0; i < result.size; i + 1) {
+      for (let i = 0; i < result.size; i += 1) {
         expect(result.get(i)).to.eql(expected.get(i));
       }
     });

@@ -85,6 +85,10 @@ describe('Transit Details Rows Creator', () => {
     const expectedLineDetailsRow = 'line details row';
     const expectedStepDetailsRow = 'step details row';
     const expected = List.of(expectedLineDetailsRow, expectedStepDetailsRow);
+    const stubbedGetLineDetailsRow = sinon.stub(rowsCreator, 'getLineDetailsRow').returns(expectedLineDetailsRow);
+    const stubbedGetStepDetailsRow = sinon.stub(rowsCreator, 'getStepDetailsRow').returns(expectedStepDetailsRow);
     expect(rowsCreator.getRows({})).to.eql(expected);
+    stubbedGetLineDetailsRow.restore();
+    stubbedGetStepDetailsRow.restore();
   });
 });

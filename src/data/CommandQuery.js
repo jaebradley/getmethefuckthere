@@ -10,16 +10,11 @@ const defaults = {
 };
 
 export default class CommandQuery extends Record(defaults) {
-  constructor() {
-    super();
-    this.travelModeIdentifier = new TravelModeIdentifier();
-  }
-
   toDirectionsSearch() {
     return new DirectionsSearch({
       origin: this.origin,
       destination: this.destination,
-      travelMode: this.identify(this.travelMode),
+      travelMode: new TravelModeIdentifier().identify(this.travelMode),
     });
   }
 }

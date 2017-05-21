@@ -1,5 +1,3 @@
-'use es6';
-
 import chai from 'chai';
 
 import CommandQuery from '../src/data/CommandQuery';
@@ -9,11 +7,6 @@ import TravelMode from '../src/data/TravelMode';
 const expect = chai.expect;
 
 describe('Test Command Query', () => {
-  it('should test travel mode identification', () => {
-    const query = new CommandQuery({ travelMode: TravelMode.DRIVING.value });
-    expect(query.identifyTravelMode()).to.eql(TravelMode.DRIVING);
-  });
-
   it('should test directions search creation', () => {
     const origin = 'origin';
     const destination = 'destination';
