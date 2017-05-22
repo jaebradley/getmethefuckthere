@@ -1,6 +1,6 @@
 {
   "name": "getmethefuckthere",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Get directions to wherever the fuck",
   "scripts": {
     "compile": "./node_modules/.bin/babel --presets es2015,stage-0 -d build/ src/",
