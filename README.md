@@ -1,6 +1,7 @@
 # Google Directions
 
 [![Build Status](https://travis-ci.org/jaebradley/getmethefuckthere.svg?branch=master)](https://travis-ci.org/jaebradley/getmethefuckthere)
+[![Coverage Status](https://coveralls.io/repos/github/jaebradley/getmethefuckthere/badge.svg?branch=master)](https://coveralls.io/github/jaebradley/getmethefuckthere?branch=master)
 [![npm version](https://badge.fury.io/js/getmethefuckthere.svg)](https://badge.fury.io/js/getmethefuckthere)
 
 ### Install
