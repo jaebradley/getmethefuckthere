@@ -11,7 +11,7 @@ Vehicle.initEnum({
   },
   HEAVY_RAIL: {
     value: 'HEAVY_RAIL',
-    emoji: emoji.get('train2')
+    emoji: emoji.get('train2'),
   },
   METRO_RAIL: {
     value: 'METRO_RAIL',
@@ -35,7 +35,7 @@ Vehicle.initEnum({
   },
   HIGH_SPEED_TRAIN: {
     value: 'HIGH_SPEED_TRAIN',
-    emoji: emoji.get('bullettrain_side')
+    emoji: emoji.get('bullettrain_side'),
   },
   BUS: {
     value: 'BUS',
