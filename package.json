@@ -23,7 +23,6 @@
     "clui": "^0.3.6",
     "commander": "2.9.0",
     "enumify": "1.0.4",
-    "file-exists-promise": "^1.0.2",
     "immutable": "3.8.1",
     "inquirer": "^3.3.0",
     "moment-timezone": "0.5.4",
