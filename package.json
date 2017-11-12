@@ -26,7 +26,6 @@
     "file-exists-promise": "^1.0.2",
     "immutable": "3.8.1",
     "inquirer": "^3.3.0",
-    "jsonfile-promised": "0.0.1",
     "moment-timezone": "0.5.4",
     "node-emoji": "1.4.3",
     "preferences": "^1.0.0",
