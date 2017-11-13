@@ -15,9 +15,9 @@ notifications:
 scripts:
   - npm run lint
   - npm run compile
+  - npm run coverage
 after_success:
   - npm config set loglevel info
-  - npm run coverage
   - npm run coveralls
   - npm run semantic-release
 branches:
