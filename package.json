@@ -9,7 +9,8 @@
     "lint": "eslint src",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "prepublish": "npm run compile"
   },
   "author": "Jae Bradley",
   "license": "MIT",
