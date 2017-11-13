@@ -64,8 +64,8 @@
     "url": "https://github.com/jaebradley/getmethefuckthere/tree/master"
   },
   "config": {
-   "commitizen": {
-     "path": "./node_modules/cz-conventional-changelog"
-   }
- }
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
