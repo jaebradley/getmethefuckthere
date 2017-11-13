@@ -1,6 +1,6 @@
 {
   "name": "getmethefuckthere",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Get directions to wherever the fuck",
   "scripts": {
     "compile": "./node_modules/.bin/babel --presets es2015,stage-0 -d build/ src/",
@@ -20,11 +20,14 @@
   "dependencies": {
     "@google/maps": "0.3.1",
     "cli-table2": "0.2.0",
+    "clui": "^0.3.6",
     "commander": "2.9.0",
     "enumify": "1.0.4",
     "immutable": "3.8.1",
+    "inquirer": "^3.3.0",
     "moment-timezone": "0.5.4",
     "node-emoji": "1.4.3",
+    "preferences": "^1.0.0",
     "striptags": "2.1.1"
   },
   "devDependencies": {
