@@ -18,7 +18,4 @@
     * `transit`
 
 #### Example
-![alt_text](http://imgur.com/bWqrt1i.png)
-
-#### Transit Example
-![alt_text](http://imgur.com/5njZfrb.png)
+![alt_text](https://imgur.com/rHgUqjl.png)
