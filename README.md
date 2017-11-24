@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/jaebradley/getmethefuckthere.svg?branch=master)](https://travis-ci.org/jaebradley/getmethefuckthere)
 [![Coverage Status](https://coveralls.io/repos/github/jaebradley/getmethefuckthere/badge.svg)](https://coveralls.io/github/jaebradley/getmethefuckthere)
-[![npm version](https://badge.fury.io/js/getmethefuckthere.svg)](https://badge.fury.io/js/getmethefuckthere)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/getmethefuckthere)
+[![npm_downloads](https://img.shields.io/npm/dt/getmethefuckthere.svg)](https://www.npmjs.com/package/getmethefuckthere)
 
 ### Install
 `npm install getmethefuckthere -g`
