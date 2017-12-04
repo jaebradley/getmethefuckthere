@@ -1,14 +1,11 @@
 /* eslint-disable no-return-assign */
 
-import { Spinner } from 'clui';
-
 import DirectionsService from './DirectionsService';
 import RoutesTranslator from './translators/RoutesTranslator';
 import RouteTableCreator from './RouteTableCreator';
 import GeocodeService from './GeocodeService';
-import { translate as translatePlaces } from './translators/PlacesTranslator';
-import { getInputtedLocation, getSelectedLocation } from './InteractiveLocationIdentifier';
-import { getSelectedTravelMode } from './InteractiveTravelModeIdentifier';
+import LocationSelector from './LocationSelector';
+import TravelModeSelector from './TravelModeSelector';
 import CommandQuery from '../data/CommandQuery';
 
 export default class CommandExecutionService {
@@ -17,22 +14,29 @@ export default class CommandExecutionService {
     this.routesTranslator = new RoutesTranslator();
     this.routeTableCreator = new RouteTableCreator();
     this.geocodeService = new GeocodeService();
+    this.locationSelector = new LocationSelector();
+    this.travelModeSelector = new TravelModeSelector();
+    this.origin = null;
+    this.destination = null;
+    this.travelMode = null;
   }
 
   execute() {
-    let origin;
-    let destination;
-    let travelMode;
-
-    return this.getLocation('start')
-      .then(value => origin = value.location)
-      .then(() => this.getLocation('end'))
-      .then(value => destination = value.location)
-      .then(() => getSelectedTravelMode())
-      .then(answer => travelMode = answer.travelMode)
+    return this.locationSelector.selectLocation('Select start location')
+      .then(location => this.origin = location)
+      .then(() => this.locationSelector.selectLocation('Select end location'))
+      .then(location => this.destination = location)
+      .then(() => this.travelModeSelector.selectTravelMode())
+      .then(travelMode => this.travelMode = travelMode)
       .then(() => {
-        const directionSearch = new CommandQuery({ origin, destination, travelMode })
-          .toDirectionsSearch();
+        const directionSearch = new CommandQuery(
+          {
+            origin: this.origin,
+            destination: this.destination,
+            travelMode: this.travelMode,
+          },
+        ).toDirectionsSearch();
+
         return this.getDirections(directionSearch);
       })
       .catch(() => console.log('Unable to fetch directions'));
@@ -44,25 +48,5 @@ export default class CommandExecutionService {
       .then(data => this.routesTranslator.translate(data.routes))
       .then(routes => routes.map(route => this.routeTableCreator.create(route)))
       .then(tables => tables.forEach(table => console.log(table.toString())));
-  }
-
-  getLocation(point) {
-    const spinner = new Spinner('Fetching address...');
-
-    return getInputtedLocation(`Enter your ${point} location`)
-      .then((answer) => {
-        spinner.start();
-        return this.geocodeService
-          .fetch(answer.location)
-          .then((values) => {
-            spinner.stop();
-            if (values.results.length === 0) {
-              throw new Error(`Unable to identify ${point} location`);
-            }
-            return values;
-          });
-      })
-      .then(values => translatePlaces(values))
-      .then(places => getSelectedLocation(`Select your ${point} location`, places.toJSON()));
   }
 }
