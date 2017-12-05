@@ -5,18 +5,19 @@
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/getmethefuckthere)
 [![npm_downloads](https://img.shields.io/npm/dt/getmethefuckthere.svg)](https://www.npmjs.com/package/getmethefuckthere)
 
+![alt-text](https://imgur.com/SGyButS.png)
+
 ### Install
 `npm install getmethefuckthere -g`
 
-### Usage
-* `gmtft -o 'origin' -d 'destination'`
-  * When no travel mode is specified, then directions default to `driving`
-* `gmtft -o 'origin' -d 'destination' -t 'travel mode'`
-  * Travel Modes
-    * `driving`
-    * `walking`
-    * `bicycling`
-    * `transit`
+### `gmtft`
+* Only one command - `gmtft`
+* Use autocompletion and/or arrow keys to select start location
+* Use autcompletion and/or arrow keys to select end location
+* Use autocompletion and/or arrow keys to select transportation mode (driving, bicycling, transit, etc.)
+
 
 #### Example
-![alt_text](https://imgur.com/rHgUqjl.png)
+
+*Get transit directions from TD Garden to Park Street Station*
+![alt_text](https://media.giphy.com/media/xUOxf0LtT2GykuuHGU/giphy.gif)
