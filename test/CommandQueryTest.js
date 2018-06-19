@@ -1,6 +1,5 @@
 import chai from 'chai';
 
-import CommandQuery from '../src/data/CommandQuery';
 import DirectionsSearch from '../src/data/DirectionsSearch';
 import TravelMode from '../src/data/TravelMode';
 
@@ -11,11 +10,11 @@ describe('Test Command Query', () => {
     const origin = 'origin';
     const destination = 'destination';
     const mode = TravelMode.DRIVING;
-    const query = new CommandQuery({
+    const query = {
       origin,
       destination,
       travelMode: mode.value,
-    });
+    };
     const expected = new DirectionsSearch({
       origin,
       destination,
