@@ -3,7 +3,6 @@ import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 
 import Time from '../src/data/Time';
-import Stop from '../src/data/Stop';
 import TransitLineDetailsTranslator from '../src/services/translators/TransitStopDetailsTranslator';
 
 chai.use(chaiImmutable);
@@ -31,10 +30,10 @@ describe('Transit Stop Details Translator', () => {
     const expectedArrivalTime = 'bar';
     const stubbedGetArrivalTime = sinon.stub(translator, 'getArrivalTime').returns(expectedArrivalTime);
     const expectedName = 'foo';
-    const expected = new Stop({
+    const expected = {
       name: expectedName,
       arrival: expectedArrivalTime,
-    });
+    };
     expect(translator.translate(expectedName, {})).to.eql(expected);
     stubbedGetArrivalTime.restore();
   });
