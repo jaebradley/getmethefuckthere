@@ -1,8 +1,6 @@
 import inquirer from 'inquirer';
 import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
 
-import Location from '../data/Location';
-
 import GeocodeService from './GeocodeService';
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
@@ -16,10 +14,10 @@ class LocationSelector {
   parseLocations(locations) {
     const choices = [];
     locations.results.forEach((result) => {
-      const location = new Location({
+      const location = {
         latitude: result.geometry.location.lat,
         longitude: result.geometry.location.lng,
-      });
+      };
       this.locations[result.formatted_address] = location;
       choices.push({ name: result.formatted_address, short: result.formatted_address });
     });
