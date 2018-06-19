@@ -5,7 +5,6 @@ import sinon from 'sinon';
 import { List } from 'immutable';
 
 import Time from '../src/data/Time';
-import Leg from '../src/data/Leg';
 import StepTranslator from '../src/services/translators/StepTranslator';
 import LegTranslator from '../src/services/translators/LegTranslator';
 
@@ -60,13 +59,13 @@ describe('Leg Translator', () => {
         start_address: startAddress,
         steps,
       };
-      const expected = new Leg({
+      const expected = {
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
         steps,
-      });
+      };
       expect(translator.translate(leg)).to.eql(expected);
 
       stubbedGetSteps.restore();
@@ -87,14 +86,14 @@ describe('Leg Translator', () => {
         steps,
         arrival_time: arrivalTime,
       };
-      const expected = new Leg({
+      const expected = {
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
         steps,
         arrivalTime,
-      });
+      };
       expect(translator.translate(leg)).to.eql(expected);
 
       stubbedGetSteps.restore();
@@ -116,14 +115,14 @@ describe('Leg Translator', () => {
         steps,
         departure_time: arrivalTime,
       };
-      const expected = new Leg({
+      const expected = {
         distance: distanceText,
         duration: durationText,
         end: endAddress,
         start: startAddress,
         steps,
         departureTime: arrivalTime,
-      });
+      };
       expect(translator.translate(leg)).to.eql(expected);
 
       stubbedGetSteps.restore();
