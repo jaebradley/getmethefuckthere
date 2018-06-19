@@ -1,7 +1,5 @@
 import { List } from 'immutable';
 
-import Place from '../../data/Place';
-
 
 const translate = data => (
   List(data.results.map((result) => {
@@ -16,11 +14,11 @@ const translate = data => (
       lng,
     } = geometry.location;
 
-    return new Place({
+    return {
       address: formatted_address,
       location: { latitude: lat, longitude: lng },
       placeId: place_id,
-    });
+    };
   }))
 );
 
