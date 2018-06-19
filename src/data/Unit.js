@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class Unit extends Enum {}
-
-Unit.initEnum({
+const Unit = Object.freeze({
   METRIC: {
     value: 'metric',
   },
@@ -10,3 +6,5 @@ Unit.initEnum({
     value: 'imperial',
   },
 });
+
+export default Unit;

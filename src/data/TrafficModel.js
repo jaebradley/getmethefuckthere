@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class TrafficModel extends Enum {}
-
-TrafficModel.initEnum({
+const TrafficModel = Object.freeze({
   OPTIMISTIC: {
     value: 'optimistic',
   },
@@ -13,3 +9,5 @@ TrafficModel.initEnum({
     value: 'best_guess',
   },
 });
+
+export default TrafficModel;

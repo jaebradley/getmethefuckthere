@@ -1,9 +1,6 @@
-import { Enum } from 'enumify';
 import emoji from 'node-emoji';
 
-export default class TravelMode extends Enum {}
-
-TravelMode.initEnum({
+const TravelMode = Object.freeze({
   DRIVING: {
     value: 'driving',
     emoji: emoji.get('car'),
@@ -21,3 +18,5 @@ TravelMode.initEnum({
     emoji: emoji.get('metro'),
   },
 });
+
+export default TravelMode;

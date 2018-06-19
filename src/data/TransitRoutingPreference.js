@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class TransitRoutingPreference extends Enum {}
-
-TransitRoutingPreference.initEnum({
+const TransitRoutingPreference = Object.freeze({
   LESS_WALKING: {
     value: 'less_walking',
   },
@@ -10,3 +6,5 @@ TransitRoutingPreference.initEnum({
     value: 'fewer_transfers',
   },
 });
+
+export default TransitRoutingPreference;

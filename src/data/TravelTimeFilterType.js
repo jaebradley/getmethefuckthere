@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class TravelTimeFilterType extends Enum {}
-
-TravelTimeFilterType.initEnum({
+const TravelTimeFilterType = Object.freeze({
   DEPARTURE: {
     value: 'departure',
   },
@@ -10,3 +6,5 @@ TravelTimeFilterType.initEnum({
     value: 'arrival',
   },
 });
+
+export default TravelTimeFilterType;

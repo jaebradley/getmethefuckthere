@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class TravelRestriction extends Enum {}
-
-TravelRestriction.initEnum({
+const TravelRestriction = Object.freeze({
   TOLLS: {
     value: 'tolls',
   },
@@ -16,3 +12,5 @@ TravelRestriction.initEnum({
     value: 'indoor',
   },
 });
+
+export default TravelRestriction;

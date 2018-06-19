@@ -1,10 +1,7 @@
-import { Enum } from 'enumify';
 import emoji from 'node-emoji';
 
-export default class Vehicle extends Enum {}
-
 // https://developers.google.com/maps/documentation/directions/intro#VehicleType
-Vehicle.initEnum({
+const Vehicle = Object.freeze({
   RAIL: {
     value: 'RAIL',
     emoji: emoji.get('bullettrain_side'),
@@ -74,3 +71,5 @@ Vehicle.initEnum({
     emoji: emoji.get('question'),
   },
 });
+
+export default Vehicle;

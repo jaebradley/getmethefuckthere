@@ -1,8 +1,4 @@
-import { Enum } from 'enumify';
-
-export default class TransitMode extends Enum {}
-
-TransitMode.initEnum({
+const TransitMode = Object.freeze({
   BUS: {
     value: 'bus',
   },
@@ -19,3 +15,5 @@ TransitMode.initEnum({
     value: 'rail',
   },
 });
+
+export default TransitMode;
