@@ -6,7 +6,7 @@ import RouteTableCreator from './RouteTableCreator';
 import GeocodeService from './GeocodeService';
 import LocationSelector from './LocationSelector';
 import TravelModeSelector from './TravelModeSelector';
-import CommandQuery from '../data/CommandQuery';
+import TravelModeIdentifier from './TravelModeIdentifier';
 
 export default class CommandExecutionService {
   constructor() {
@@ -29,13 +29,11 @@ export default class CommandExecutionService {
       .then(() => this.travelModeSelector.selectTravelMode())
       .then(travelMode => this.travelMode = travelMode)
       .then(() => {
-        const directionSearch = new CommandQuery(
-          {
-            origin: this.origin,
-            destination: this.destination,
-            travelMode: this.travelMode,
-          },
-        ).toDirectionsSearch();
+        const directionSearch = {
+          origin: this.origin,
+          destination: this.destination,
+          travelMode: new TravelModeIdentifier().identify(this.travelMode),
+        };
 
         return this.getDirections(directionSearch);
       })
