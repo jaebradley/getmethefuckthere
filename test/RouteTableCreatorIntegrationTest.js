@@ -5,7 +5,6 @@ import chaiImmutable from 'chai-immutable';
 
 import { List } from 'immutable';
 
-import Step from '../src/data/Step';
 import RouteTableCreator from '../src/services/RouteTableCreator';
 import TravelMode from '../src/data/TravelMode';
 
@@ -24,12 +23,12 @@ describe('Route Table Creator Integration Test', () => {
   const end = 'baebae';
   const summary = 'summary';
   const warnings = List.of('warning', 'another warning');
-  const step = new Step({
+  const step = {
     distance,
     duration,
     instructions,
     mode,
-  });
+  };
   const leg = {
     distance,
     duration,

@@ -2,7 +2,6 @@ import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 import TransitDetails from '../src/data/TransitDetails';
-import Step from '../src/data/Step';
 import StepTranslator from '../src/services/translators/StepTranslator';
 import TransitStopDetailsTranslator from '../src/services/translators/TransitStopDetailsTranslator';
 import TransitLineDetailsTranslator from '../src/services/translators/TransitLineDetailsTranslator';
@@ -65,12 +64,12 @@ describe('Step Translator', () => {
         html_instructions: htmlInstructions,
         travel_mode: travelMode,
       };
-      const expected = new Step({
+      const expected = {
         distance: distanceText,
         duration: durationText,
         instructions: htmlInstructions,
         mode: travelMode,
-      });
+      };
       expect(translator.translate(step)).to.eql(expected);
 
       stubbedTravelModeIdentifier.restore();
@@ -94,13 +93,13 @@ describe('Step Translator', () => {
         travel_mode: travelMode,
         transit_details: expectedTransitDetails,
       };
-      const expected = new Step({
+      const expected = {
         distance: distanceText,
         duration: durationText,
         instructions: htmlInstructions,
         mode: travelMode,
         transitDetails: expectedTransitDetails,
-      });
+      };
 
       expect(translator.translate(step)).to.eql(expected);
 

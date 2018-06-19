@@ -1,8 +1,6 @@
-import { Map } from 'immutable';
 import striptags from 'striptags';
 
 import TransitDetails from '../../data/TransitDetails';
-import Step from '../../data/Step';
 import TravelModeIdentifier from '../TravelModeIdentifier';
 import TransitStopDetailsTranslator from './TransitStopDetailsTranslator';
 import TransitLineDetailsTranslator from './TransitLineDetailsTranslator';
@@ -16,28 +14,19 @@ export default class StepTranslator {
   }
 
   translate(step) {
-    let parameters = Map({
+    return {
       distance: step.distance.text,
       duration: step.duration.text,
       instructions: striptags(step.html_instructions),
       mode: this.travelModeIdentifier.identify(step.travel_mode),
-    });
-
-    if ('transit_details' in step) {
-      parameters = parameters.set('transitDetails', this.getTransitDetails(step.transit_details));
-    }
-
-    return new Step(parameters);
-  }
-
-  getTransitDetails(transitDetails) {
-    return new TransitDetails({
-      arrival: this.stopTranslator.translate(transitDetails.arrival_stop.name,
-                                             transitDetails.arrival_time),
-      departure: this.stopTranslator.translate(transitDetails.departure_stop.name,
-                                               transitDetails.departure_time),
-      line: this.lineTranslator.translate(transitDetails.line),
-      stopCount: transitDetails.num_stops,
-    });
+      transitDetails: step.transit_details
+        ? new TransitDetails({
+          arrival: this.stopTranslator.translate(step.transit_details.arrival_stop.name, step.transit_details.arrival_time),
+          departure: this.stopTranslator.translate(step.transit_details.departure_stop.name, step.transit_details.departure_time),
+          line: this.lineTranslator.translate(step.transit_details.line),
+          stopCount: step.transit_details.num_stops,
+        })
+        : null,
+    };
   }
 }
