@@ -1,9 +1,8 @@
 import { Record } from 'immutable';
-import Location from './Location';
 
 const defaults = {
   address: '',
-  location: new Location(),
+  location: { latitude: 0, longitude: 0 },
   placeId: '',
 };
 

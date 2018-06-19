@@ -1,7 +1,6 @@
 import { List } from 'immutable';
 
 import Place from '../../data/Place';
-import Location from '../../data/Location';
 
 
 const translate = data => (
@@ -19,7 +18,7 @@ const translate = data => (
 
     return new Place({
       address: formatted_address,
-      location: new Location({ latitude: lat, longitude: lng }),
+      location: { latitude: lat, longitude: lng },
       placeId: place_id,
     });
   }))
