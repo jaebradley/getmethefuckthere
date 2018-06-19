@@ -1,18 +1,16 @@
 import { List } from 'immutable';
 
-import Line from '../../data/Line';
-
 export default class TransitLineDetailsTranslator {
   constructor(vehicleIdentifier) {
     this.vehicleIdentifier = vehicleIdentifier;
   }
 
   translate(lineDetails) {
-    return new Line({
+    return {
       name: this.getLineName(lineDetails),
       agencies: this.getAgencyNames(lineDetails),
       vehicle: this.getVehicle(lineDetails),
-    });
+    };
   }
 
   getLineName(lineDetails) {
