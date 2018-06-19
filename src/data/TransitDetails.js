@@ -1,16 +1,21 @@
 import { Record } from 'immutable';
 
 import Vehicle from './Vehicle';
-import Time from './Time';
 
 const defaults = {
   arrival: {
     name: '',
-    arrival: new Time(),
+    arrival: {
+      value: '',
+      timezone: '',
+    },
   },
   departure: {
     name: '',
-    arrival: new Time(),
+    arrival: {
+      value: '',
+      timezone: '',
+    },
   },
   stopCount: 0,
   line: {

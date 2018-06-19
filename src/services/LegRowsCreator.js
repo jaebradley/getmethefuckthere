@@ -1,12 +1,9 @@
 import { List, Map } from 'immutable';
 
-import Time from '../data/Time';
-
-
 export default class LegRowsCreator {
   create(leg) {
     const rows = List.of(this.getRow(this.getLegDetailsContent(leg)));
-    if ((leg.departureTime instanceof Time) && (leg.arrivalTime instanceof Time)) {
+    if (leg.departureTime && leg.arrivalTime) {
       return rows.push(this.getRow(this.getTimeDetailsContent(leg.departureTime, leg.arrivalTime)));
     }
 
