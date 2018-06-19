@@ -3,7 +3,6 @@ import chaiImmutable from 'chai-immutable';
 import sinon from 'sinon';
 import { List } from 'immutable';
 
-import Route from '../src/data/Route';
 import LegTranslator from '../src/services/translators/LegTranslator';
 import RoutesTranslator from '../src/services/translators/RoutesTranslator';
 
@@ -32,11 +31,11 @@ describe('Routes Translator', () => {
       warnings,
       legs,
     };
-    const expected = new Route({
+    const expected = {
       summary: routeSummary,
       warnings: List(warnings),
       legs,
-    });
+    };
     expect(translator.getRoute(route)).to.eql(expected);
     stubbedGetLegs.restore();
   });

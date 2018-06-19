@@ -1,6 +1,5 @@
 import { List } from 'immutable';
 
-import Route from '../../data/Route';
 import LegTranslator from './LegTranslator';
 
 export default class RoutesTranslator {
@@ -13,14 +12,10 @@ export default class RoutesTranslator {
   }
 
   getRoute(route) {
-    return new Route({
+    return {
       summary: route.summary,
-      warnings: List(route.warnings),
-      legs: this.getLegs(route.legs),
-    });
-  }
-
-  getLegs(legs) {
-    return List(legs.map(leg => this.legTranslator.translate(leg)));
+      warnings: route.warnings,
+      legs: route.legs.map(leg => this.legTranslator.translate(leg)),
+    };
   }
 }
