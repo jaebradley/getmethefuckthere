@@ -3,7 +3,6 @@
 import chai from 'chai';
 import chaiImmutable from 'chai-immutable';
 import { List, Map } from 'immutable';
-import DirectionsSearch from '../src/data/DirectionsSearch';
 import TrafficModel from '../src/data/TrafficModel';
 import TransitMode from '../src/data/TransitMode';
 import TravelMode from '../src/data/TravelMode';
@@ -32,7 +31,7 @@ describe('Test Directions Search', () => {
   const useAlternatives = false;
 
   it('should test transit parameter creation', () => {
-    const transitDirections = new DirectionsSearch({
+    const transitDirections = {
       destination,
       origin,
       travelMode: transitMode,
@@ -40,7 +39,7 @@ describe('Test Directions Search', () => {
       transitModes,
       travelRestrictions,
       useAlternatives,
-    });
+    };
     const expected = Map({
       destination,
       origin,
@@ -54,7 +53,7 @@ describe('Test Directions Search', () => {
 
   it('should test non-transit parameter creation', () => {
     const travelTimeFilter = new TravelTimeFilter();
-    const drivingDirections = new DirectionsSearch({
+    const drivingDirections = {
       destination,
       origin,
       travelMode: drivingMode,
@@ -63,7 +62,7 @@ describe('Test Directions Search', () => {
       travelRestrictions,
       useAlternatives,
       travelTimeFilter,
-    });
+    };
     let expected = Map({
       destination,
       origin,
@@ -73,6 +72,6 @@ describe('Test Directions Search', () => {
       traffic_model: trafficModel.value,
     });
     expected = expected.merge(travelTimeFilter.toParameter());
-    expect(drivingDirections.toParameters()).to.eql(expected);
+    expect(drivingDirections).to.eql(expected);
   });
 });

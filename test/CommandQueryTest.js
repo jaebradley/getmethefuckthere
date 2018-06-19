@@ -1,6 +1,5 @@
 import chai from 'chai';
 
-import DirectionsSearch from '../src/data/DirectionsSearch';
 import TravelMode from '../src/data/TravelMode';
 
 const expect = chai.expect;
@@ -15,11 +14,11 @@ describe('Test Command Query', () => {
       destination,
       travelMode: mode.value,
     };
-    const expected = new DirectionsSearch({
+    const expected = {
       origin,
       destination,
       travelMode: mode,
-    });
+    };
     expect(query.toDirectionsSearch()).to.eql(expected);
   });
 });
