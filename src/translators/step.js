@@ -1,7 +1,9 @@
 import striptags from 'striptags';
 
-import TravelMode from '../../data/TravelMode';
-import Vehicle from '../../data/Vehicle';
+import {
+  TravelMode,
+  Vehicle,
+ } from '../constants';
 
 const translateTransitLineDetails = ({
   name,

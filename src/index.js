@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 
-import translateRoute from './translators/translateRoute';
+import translateRoute from './translators/route';
 import LocationSelector from './LocationSelector';
 import {
   GEOCODE_API_KEY,
@@ -26,7 +26,10 @@ const execute = async () => {
     travelMode,
   });
 
-  routes.map(route => translateRoute(route)).map(route => createRouteTable(route)).forEach(table => console.log(table.toString()));
+  routes
+    .map(route => translateRoute(route))
+    .map(route => createRouteTable(route))
+    .forEach(table => console.log(table.toString()));
 };
 
 export default execute;

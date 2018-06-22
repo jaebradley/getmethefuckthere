@@ -1,7 +1,0 @@
-const GEOCODE_API_KEY = 'AIzaSyBfyXZ3kDp03V_o7_mak0wxVU4B2Zcl0Ak';
-const DIRECTIONS_API_KEY = 'AIzaSyDDFgQKQ25AmRPvZlZ7rfeVnlouhsnV7iI';
-
-export {
-  GEOCODE_API_KEY,
-  DIRECTIONS_API_KEY,
-};

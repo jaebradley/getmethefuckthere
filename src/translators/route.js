@@ -1,4 +1,4 @@
-import translateStep from './translateStep';
+import translateStep from './step';
 
 const translateLeg = ({
   distance,
