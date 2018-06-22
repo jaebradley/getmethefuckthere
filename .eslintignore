@@ -4,6 +4,3 @@ node_modules
 
 // temporarily ignore tests
 test/*
-
-// temporarily ignore src
-src/*

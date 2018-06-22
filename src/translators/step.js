@@ -3,60 +3,60 @@ import striptags from 'striptags';
 import {
   TRAVEL_MODE,
   VEHICLE,
- } from '../constants';
+} from '../constants';
 
 const translateTransitLineDetails = ({
   name,
-  short_name: shortName,
   agencies,
   vehicle,
+  short_name: shortName,
 }) => (
   {
     name: name || shortName,
-    agencies: agencies.map(({ name }) => name),
+    agencies: agencies.map(({ name: agencyName }) => agencyName),
     vehicle: VEHICLE[vehicle.type.toUpperCase()],
   }
 );
 
 const translateTransitDetails = ({
-  arrival_stop,
-  arrival_time,
-  departure_stop,
-  departure_time,
   line,
-  num_stops,
+  arrival_stop: arrivalStop,
+  arrival_time: arrivalTime,
+  departure_stop: departureStop,
+  departure_time: departureTime,
+  num_stops: stopCount,
 }) => ({
   arrival: {
-    name: arrival_stop.name,
+    name: arrivalStop.name,
     arrival: {
-      value: arrival_time.text,
-      timezone: arrival_time.time_zone,
+      value: arrivalTime.text,
+      timezone: arrivalTime.time_zone,
     },
   },
   departure: {
-    name: departure_stop.name,
+    name: departureStop.name,
     arrival: {
-      value: departure_time.text,
-      timezone: departure_time.time_zone,
+      value: departureTime.text,
+      timezone: departureTime.time_zone,
     },
   },
   line: translateTransitLineDetails(line),
-  stopCount: num_stops,
+  stopCount,
 });
 
 const translateStep = ({
   distance,
   duration,
-  html_instructions,
-  travel_mode,
-  transit_details,
+  html_instructions: htmlInstructions,
+  travel_mode: travelMode,
+  transit_details: transitDetails,
 }) => ({
   distance: distance.text,
   duration: duration.text,
-  instructions: striptags(html_instructions),
-  mode: TRAVEL_MODE[travel_mode.toUpperCase()],
-  transitDetails: transit_details
-    ? translateTransitDetails(transit_details)
+  instructions: striptags(htmlInstructions),
+  mode: TRAVEL_MODE[travelMode.toUpperCase()],
+  transitDetails: transitDetails
+    ? translateTransitDetails(transitDetails)
     : null,
 });
 

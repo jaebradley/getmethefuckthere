@@ -24,9 +24,9 @@ const selectTravelMode = async () => {
       name: 'travelMode',
       message: 'Select your travel mode',
       source: (_, input) => Promise.resolve(fuzzy.filter(input || '', formattedTravelModes).map(match => match.original)),
-    }
+    },
   ]);
   return formattedTravelModesToValues[travelMode];
-}
+};
 
 export default selectTravelMode;

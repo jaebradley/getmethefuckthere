@@ -3,24 +3,24 @@ import translateStep from './step';
 const translateLeg = ({
   distance,
   duration,
-  end_address,
-  start_address,
   steps,
-  arrival_time,
-  departure_time,
+  end_address: endAddress,
+  start_address: startAddress,
+  arrival_time: arrivalTime,
+  departure_time: departureTime,
 }) => ({
   distance: distance.text,
   duration: duration.text,
-  end: end_address,
-  start: start_address,
+  end: endAddress,
+  start: startAddress,
   steps: steps.map(step => translateStep(step)),
-  arrivalTime: arrival_time ? {
-    value: arrival_time.text,
-    timezone: arrival_time.time_zone,
+  arrivalTime: arrivalTime ? {
+    value: arrivalTime.text,
+    timezone: arrivalTime.time_zone,
   } : null,
-  departureTime: departure_time ? {
-    value: departure_time.text,
-    timezone: departure_time.time_zone,
+  departureTime: departureTime ? {
+    value: departureTime.text,
+    timezone: departureTime.time_zone,
   } : null,
 });
 

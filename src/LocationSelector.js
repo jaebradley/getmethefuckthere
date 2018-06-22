@@ -37,11 +37,11 @@ class LocationSelector {
           }
 
           return Promise.resolve([]);
-        }
-      }
+        },
+      },
     ]);
     return this.locations[location];
   }
-};
+}
 
 export default LocationSelector;

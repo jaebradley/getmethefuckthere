@@ -33,6 +33,6 @@ class GoogleMapsService {
     const { json } = await this.geocodeAPIClient.geocode({ address }).asPromise();
     return json;
   }
-};
+}
 
-export default GoogleMapsService
+export default GoogleMapsService;

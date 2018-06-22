@@ -90,7 +90,7 @@ const createStepRows = ({ step, index }) => {
   ]];
 
   if (transitDetails) {
-    rows.push.apply(rows, createTransitDetailsRows(transitDetails));
+    rows.push(...createTransitDetailsRows(transitDetails));
   }
 
   return rows;
