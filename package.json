@@ -22,6 +22,7 @@
     "gmtft": "./build/gmtft.js"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.51",
     "@google/maps": "^0.4.6",
     "cli-table3": "^0.5.0",
     "commander": "^2.15.1",
@@ -37,7 +38,6 @@
     "@babel/plugin-transform-async-to-generator": "^7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
-    "@babel/runtime": "^7.0.0-beta.51",
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-angular": "^7.0.1",
     "@commitlint/prompt": "^7.0.0",
