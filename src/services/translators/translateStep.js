@@ -1,7 +1,20 @@
 import striptags from 'striptags';
 
 import TravelMode from '../../data/TravelMode';
-import translateTransitLineDetails from './translateTransitLineDetails';
+import Vehicle from '../../data/Vehicle';
+
+const translateTransitLineDetails = ({
+  name,
+  short_name: shortName,
+  agencies,
+  vehicle,
+}) => (
+  {
+    name: name || shortName,
+    agencies: agencies.map(({ name }) => name),
+    vehicle: Vehicle[vehicle.type.toLowerCase()],
+  }
+);
 
 const translateStep = ({
   distance,
