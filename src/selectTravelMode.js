@@ -2,17 +2,17 @@ import inquirer from 'inquirer';
 import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
 import fuzzy from 'fuzzy';
 
-import TravelMode from '../data/TravelMode';
+import { TRAVEL_MODE } from './constants';
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 
 const getTravelModeKey = mode => `${mode.emoji}   (${mode.value})`;
 
 const formattedTravelModesToValues = Object.freeze({
-  [getTravelModeKey(TravelMode.DRIVING)]: TravelMode.DRIVING,
-  [getTravelModeKey(TravelMode.WALKING)]: TravelMode.WALKING,
-  [getTravelModeKey(TravelMode.BICYCLING)]: TravelMode.BICYCLING,
-  [getTravelModeKey(TravelMode.TRANSIT)]: TravelMode.TRANSIT,
+  [getTravelModeKey(TRAVEL_MODE.DRIVING)]: TRAVEL_MODE.DRIVING,
+  [getTravelModeKey(TRAVEL_MODE.WALKING)]: TRAVEL_MODE.WALKING,
+  [getTravelModeKey(TRAVEL_MODE.BICYCLING)]: TRAVEL_MODE.BICYCLING,
+  [getTravelModeKey(TRAVEL_MODE.TRANSIT)]: TRAVEL_MODE.TRANSIT,
 });
 
 const formattedTravelModes = Object.keys(formattedTravelModesToValues);

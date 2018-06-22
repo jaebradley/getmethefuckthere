@@ -1,8 +1,8 @@
 import striptags from 'striptags';
 
 import {
-  TravelMode,
-  Vehicle,
+  TRAVEL_MODE,
+  VEHICLE,
  } from '../constants';
 
 const translateTransitLineDetails = ({
@@ -14,7 +14,7 @@ const translateTransitLineDetails = ({
   {
     name: name || shortName,
     agencies: agencies.map(({ name }) => name),
-    vehicle: Vehicle[vehicle.type.toUpperCase()],
+    vehicle: VEHICLE[vehicle.type.toUpperCase()],
   }
 );
 
@@ -54,7 +54,7 @@ const translateStep = ({
   distance: distance.text,
   duration: duration.text,
   instructions: striptags(html_instructions),
-  mode: TravelMode[travel_mode.toUpperCase()],
+  mode: TRAVEL_MODE[travel_mode.toUpperCase()],
   transitDetails: transit_details
     ? translateTransitDetails(transit_details)
     : null,

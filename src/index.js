@@ -5,7 +5,7 @@ import LocationSelector from './LocationSelector';
 import {
   GEOCODE_API_KEY,
   DIRECTIONS_API_KEY,
-} from '../data/constants';
+} from './constants';
 import GoogleMapsService from './GoogleMapsService';
 import createRouteTable from './createRouteTable';
 import selectTravelMode from './selectTravelMode';
