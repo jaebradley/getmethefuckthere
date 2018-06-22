@@ -1,6 +1,3 @@
 coverage/*
 build
 node_modules
-
-// temporarily ignore tests
-test/*
