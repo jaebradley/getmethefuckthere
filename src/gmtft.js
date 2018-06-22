@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 
-import execute from '../services/execute';
+import execute from '../';
 
 try {
   execute()
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log('Unable to get you the fuck there');
+      console.log(e);
+    });
 } catch (e) {
-  console.log('Unable to fetch directions');
+  console.log('Unable to get you the fuck there');
+  console.log(e);
 }
