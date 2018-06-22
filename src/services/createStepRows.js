@@ -15,16 +15,16 @@ const createStepRows = ({ step, index }) => {
     transitDetails,
   } = step;
 
-  const rows = [
+  const rows = [[
     buildCell(`Step #${index}`),
     buildCell(distance),
     buildCell(duration),
     buildCell(instructions),
     buildCell(mode.emoji),
-  ];
+  ]];
 
   if (transitDetails) {
-    rows.concat(createTransitDetailsRows(transitDetails));
+    rows.push.apply(rows, createTransitDetailsRows(transitDetails));
   }
 
   return rows;

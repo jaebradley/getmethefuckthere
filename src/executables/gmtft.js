@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-import CommandExecutionService from '../services/CommandExecutionService';
+import execute from '../services/execute';
 
 try {
-  new CommandExecutionService()
-    .execute()
-    .catch(() => console.log('Unable to fetch directions'));
+  execute()
+    .catch((e) => console.log(e));
 } catch (e) {
   console.log('Unable to fetch directions');
 }

@@ -22,14 +22,14 @@ class LocationSelector {
     return choices;
   }
 
-  selectLocation(message) {
+  async selectLocation(message) {
     const { location } = await inquirer.prompt([
       {
         message,
         type: 'autocomplete',
         name: 'location',
         validate: value => value.trim().length > 0,
-        source: (_, input) => {
+        source: async (_, input) => {
           if (input) {
             const results = await this.googleMapsService.getGeocode(input);
             const locations = this.parseLocations(results);

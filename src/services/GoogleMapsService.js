@@ -1,15 +1,36 @@
+
+import GoogleMapsClient from '@google/maps';
+
 class GoogleMapsService {
-  constructor(googleMapsClient) {
-    this.googleMapsClient = googleMapsClient;
+  constructor({ directionsAPIKey, geocodeAPIKey }) {
+    this.directionsAPIClient = GoogleMapsClient.createClient({
+      key: directionsAPIKey,
+      Promise,
+    });
+    this.geocodeAPIClient = GoogleMapsClient.createClient({
+      key: geocodeAPIKey,
+      Promise,
+    });
   }
 
-  getDirections(query) {
-    const { json } = await this.googleMapsClient.directions(query).asPromise();
+  // https://developers.google.com/maps/documentation/directions/intro
+  async getDirections({
+    destination,
+    origin,
+    travelMode,
+  }) {
+    const query = {
+      destination,
+      origin,
+      mode: travelMode.value,
+    };
+
+    const { json } = await this.directionsAPIClient.directions(query).asPromise();
     return json;
   }
 
-  getGeocode(address) {
-    const { json } = await this.googleMapsClient.geocode({ address }).asPromise();
+  async getGeocode(address) {
+    const { json } = await this.geocodeAPIClient.geocode({ address }).asPromise();
     return json;
   }
 };

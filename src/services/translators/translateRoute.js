@@ -24,10 +24,10 @@ const translateLeg = ({
   } : null,
 });
 
-const translateRoutes = ({ summary, warnings, legs }) => ({
+const translateRoute = ({ summary, warnings, legs }) => ({
   summary,
   warnings,
   legs: legs.map(leg => translateLeg(leg)),
 });
 
-export default translateRoutes;
+export default translateRoute;

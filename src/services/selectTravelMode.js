@@ -9,15 +9,15 @@ inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 const getTravelModeKey = mode => `${mode.emoji}   (${mode.value})`;
 
 const formattedTravelModesToValues = Object.freeze({
-  [getTravelModeKey(TravelMode.DRIVING)]: TravelMode.DRIVING.value,
-  [getTravelModeKey(TravelMode.WALKING)]: TravelMode.WALKING.value,
-  [getTravelModeKey(TravelMode.BICYCLING)]: TravelMode.BICYCLING.value,
-  [getTravelModeKey(TravelMode.TRANSIT)]: TravelMode.TRANSIT.value,
+  [getTravelModeKey(TravelMode.DRIVING)]: TravelMode.DRIVING,
+  [getTravelModeKey(TravelMode.WALKING)]: TravelMode.WALKING,
+  [getTravelModeKey(TravelMode.BICYCLING)]: TravelMode.BICYCLING,
+  [getTravelModeKey(TravelMode.TRANSIT)]: TravelMode.TRANSIT,
 });
 
 const formattedTravelModes = Object.keys(formattedTravelModesToValues);
 
-const selectTravelMode = () => {
+const selectTravelMode = async () => {
   const { travelMode } = await inquirer.prompt([
     {
       type: 'autocomplete',

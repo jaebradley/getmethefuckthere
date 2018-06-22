@@ -15,6 +15,8 @@ const createRouteTable = (route) => {
   });
 
   createRouteMetadataRows(route).forEach(row => table.push(row));
+
+  return table;
 };
 
 export default createRouteTable;

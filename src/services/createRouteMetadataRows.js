@@ -1,7 +1,7 @@
 const createRouteMetadataRows = ({ summary, warnings }) => {
   const rows = [];
 
-  if (summary) {
+  if (summary.length > 0) {
     rows.push([
       {
         content: 'Summary',
@@ -16,7 +16,7 @@ const createRouteMetadataRows = ({ summary, warnings }) => {
     ]);
   }
 
-  if (warnings) {
+  if (warnings.length > 0) {
     rows.push([
       {
         content: 'Warnings',
@@ -24,7 +24,7 @@ const createRouteMetadataRows = ({ summary, warnings }) => {
         hAlign: 'center',
       },
       {
-        content: warnings,
+        content: warnings.join(' | '),
         colSpan: 4,
         hAlign: 'center',
       },
