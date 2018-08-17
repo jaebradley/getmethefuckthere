@@ -144,4 +144,3 @@ const createRouteTable = (route) => {
 };
 
 export default createRouteTable;
-
