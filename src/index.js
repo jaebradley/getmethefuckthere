@@ -1,29 +1,31 @@
+/* eslint no-console: 0 */
+
 import createRouteTable from './createRouteTable';
 import {
-  GEOCODE_API_KEY,
   DIRECTIONS_API_KEY,
 } from './constants';
-import GoogleMapsService from './GoogleMapsService';
-import LocationSelector from './LocationSelector';
 import selectTravelMode from './selectTravelMode';
 import translateRoute from './translateRoute';
+import createDirectionsService from './createDirectionsService';
+import selectLocation from './selectLocation';
 
 const execute = async () => {
-  const googleMapsService = new GoogleMapsService({
-    directionsAPIKey: DIRECTIONS_API_KEY,
-    geocodeAPIKey: GEOCODE_API_KEY,
-  });
+  const originSelector = selectLocation({ message: 'Select start location' });
+  const originResult = await originSelector.run();
 
-  const locationSelector = new LocationSelector(googleMapsService);
-  const origin = await locationSelector.selectLocation('Select start location');
-  const destination = await locationSelector.selectLocation('Select end location');
+  const destinationSelector = selectLocation({ message: 'Select end location' });
+  const destinationResult = await destinationSelector.run();
 
-  const travelMode = await selectTravelMode();
+  const travelModeSelector = selectTravelMode({ message: 'Select travel mode' });
+  const travelModeResult = await travelModeSelector.run();
 
-  const { routes } = await googleMapsService.getDirections({
-    origin,
-    destination,
-    travelMode,
+  const directionsService = createDirectionsService(DIRECTIONS_API_KEY);
+  const {
+    routes,
+  } = await directionsService.getDirections({
+    origin: originResult.location,
+    destination: destinationResult.location,
+    travelMode: travelModeResult,
   });
 
   routes
