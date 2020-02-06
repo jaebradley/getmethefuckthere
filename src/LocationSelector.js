@@ -28,7 +28,7 @@ class LocationSelector {
         message,
         type: 'autocomplete',
         name: 'location',
-        validate: value => value.trim().length > 0,
+        validate: (value) => value.trim().length > 0,
         source: async (_, input) => {
           if (input) {
             const results = await this.googleMapsService.getGeocode(input);

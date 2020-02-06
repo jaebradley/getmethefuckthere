@@ -66,7 +66,7 @@ const createTransitDetailsRows = ({
   ];
 };
 
-const buildCell = content => ({
+const buildCell = (content) => ({
   content,
   colSpan: 1,
   hAlign: 'center',
@@ -131,14 +131,14 @@ const createRouteTable = (route) => {
   const table = new Table();
 
   route.legs.forEach((leg) => {
-    createLegRows(leg).forEach(row => table.push(row));
+    createLegRows(leg).forEach((row) => table.push(row));
 
     leg.steps.forEach((step, index) => {
-      createStepRows({ step, index }).forEach(row => table.push(row));
+      createStepRows({ step, index }).forEach((row) => table.push(row));
     });
   });
 
-  createRouteMetadataRows(route).forEach(row => table.push(row));
+  createRouteMetadataRows(route).forEach((row) => table.push(row));
 
   return table;
 };

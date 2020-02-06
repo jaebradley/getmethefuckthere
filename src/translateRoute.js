@@ -73,7 +73,7 @@ const translateLeg = ({
   duration: duration.text,
   end: endAddress,
   start: startAddress,
-  steps: steps.map(step => translateStep(step)),
+  steps: steps.map((step) => translateStep(step)),
   arrivalTime: arrivalTime ? {
     value: arrivalTime.text,
     timezone: arrivalTime.time_zone,
@@ -87,7 +87,7 @@ const translateLeg = ({
 const translateRoute = ({ summary, warnings, legs }) => ({
   summary,
   warnings,
-  legs: legs.map(leg => translateLeg(leg)),
+  legs: legs.map((leg) => translateLeg(leg)),
 });
 
 export default translateRoute;
