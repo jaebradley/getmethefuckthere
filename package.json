@@ -3,16 +3,16 @@
   "version": "0.0.0-development",
   "description": "Get directions to wherever the fuck",
   "scripts": {
-    "codecov": "codecov",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "build": "babel src/ -d build/ --delete-dir-on-start",
+    "codecov": "npx codecov",
+    "commitmsg": "npx commitlint -e $GIT_PARAMS",
+    "build": "npx babel src/ -d build/ --delete-dir-on-start",
     "build:prod": "BABEL_ENV=production npm run build",
-    "lint": "eslint --ext .js .",
-    "test": "jest --passWithNoTests",
+    "lint": "npx eslint --ext .js .",
+    "test": "npx jest",
     "prepublishOnly": "npm run build:prod",
     "gc": "commit",
-    "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "semantic-release": "npx semantic-release",
+    "travis-deploy-once": "npx travis-deploy-once"
   },
   "author": "Jae Bradley",
   "license": "MIT",
