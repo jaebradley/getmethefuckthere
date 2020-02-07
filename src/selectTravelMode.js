@@ -6,7 +6,7 @@ import { TRAVEL_MODE } from './constants';
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 
-const getTravelModeKey = mode => `${mode.emoji}   (${mode.value})`;
+const getTravelModeKey = (mode) => `${mode.emoji}   (${mode.value})`;
 
 const formattedTravelModesToValues = Object.freeze({
   [getTravelModeKey(TRAVEL_MODE.DRIVING)]: TRAVEL_MODE.DRIVING,
@@ -23,7 +23,7 @@ const selectTravelMode = async () => {
       type: 'autocomplete',
       name: 'travelMode',
       message: 'Select your travel mode',
-      source: (_, input) => Promise.resolve(fuzzy.filter(input || '', formattedTravelModes).map(match => match.original)),
+      source: (_, input) => Promise.resolve(fuzzy.filter(input || '', formattedTravelModes).map((match) => match.original)),
     },
   ]);
   return formattedTravelModesToValues[travelMode];

@@ -27,9 +27,9 @@ const execute = async () => {
   });
 
   routes
-    .map(route => translateRoute(route))
-    .map(route => createRouteTable(route))
-    .forEach(table => console.log(table.toString()));
+    .map((route) => translateRoute(route))
+    .map((route) => createRouteTable(route))
+    .forEach((table) => console.log(table.toString()));
 };
 
 export default execute;
