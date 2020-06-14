@@ -1,6 +1,6 @@
 # Google Directions
 
-[![Build Status](https://travis-ci.org/jaebradley/getmethefuckthere.svg?branch=master)](https://travis-ci.org/jaebradley/getmethefuckthere)
+![getmethefuckthere](https://github.com/jaebradley/getmethefuckthere/workflows/getmethefuckthere/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/jaebradley/getmethefuckthere/badge.svg)](https://coveralls.io/github/jaebradley/getmethefuckthere)
 [![npm](https://img.shields.io/npm/v/getmethefuckthere.svg)](https://www.npmjs.com/package/getmethefuckthere)
 [![npm_downloads](https://img.shields.io/npm/dt/getmethefuckthere.svg)](https://www.npmjs.com/package/getmethefuckthere)
