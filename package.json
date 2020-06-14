@@ -22,7 +22,7 @@
     "gmtft": "./build/gmtft.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
+    "@babel/runtime": "^7.9.6",
     "@google/maps": "^1.1.0",
     "cli-table3": "^0.5.1",
     "commander": "^4.1.1",
