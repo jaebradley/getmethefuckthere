@@ -24,7 +24,7 @@
   "dependencies": {
     "@babel/runtime": "^7.10.0",
     "@google/maps": "^1.1.3",
-    "cli-table3": "^0.6.0",
+    "cli-table3": "^0.6.1",
     "commander": "^4.1.1",
     "fuzzy": "^0.1.3",
     "inquirer": "^6.5.2",
